@@ -15,7 +15,9 @@ The game should run by double clicking it, or run it in a terminal with
 'python ./heart-matters.py'.
 
 If none of these work:
+
 	Do you have python properly installed?
+	
 	Do you have permission to execute the file?
 
 Licensing and Legalese

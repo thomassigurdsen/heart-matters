@@ -31,11 +31,13 @@ class Player(pygame.sprite.Sprite):
 	def __init__ (self):
 		if DEBUG > 2:
 			print("in Player.__init__()")
+		self.startxpos = 200
+		self.startypos = 200
 		pygame.sprite.Sprite.__init__(self)
 		self.image, self.rect = loadimage("res/image/character.png")
 		screen = pygame.display.get_surface()
 		self.scrArea = screen.get_rect()
-		self.rect = self.rect.move(200,200)
+		self.rect = self.rect.move(self.startxpos, self.startypos)
 	#end __ init__
 
 	def draw(self, screen):
@@ -59,5 +61,5 @@ class Player(pygame.sprite.Sprite):
 	# end keyMove
 
 	def resetPosition(self):
-		self.rect[0], self.rect[1] = 0, 0
+		self.rect[0], self.rect[1] = self.startxpos, self.startypos
 	#end resetPosition

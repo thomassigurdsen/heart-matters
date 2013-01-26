@@ -6,3 +6,4 @@
 *.vcxproj.* binary
 *.pdf binary
 *.doc* binary
+res/*

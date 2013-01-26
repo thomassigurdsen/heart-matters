@@ -21,4 +21,20 @@
 #
 #
 
+class HMGame:
+    def __init__(self, screen):
+        self.screen = screen
+    # __init__() end
 
+    def update(self):
+        self.eventHandler()
+        self.displayUpdate()
+    # update() end
+
+    def eventHandler(self):
+        print("in eventHadler")
+    # eventHandler() end
+
+    def displayUpdate(self):
+        print("in displayUpdate")
+    # displayUpdate() end

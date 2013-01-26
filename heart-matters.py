@@ -23,7 +23,8 @@
 
 import sys, pygame
 sys.path.append('./src/')
-import hmgame
+#import hmgame
+from hmgame import *
 print(pygame.init())
 
 def main():
@@ -36,11 +37,10 @@ def main():
 
     # The screen is a pygame surface object.
     screen = pygame.display.set_mode(size, pygame.RESIZABLE)
+    hmgame = HMGame(screen)
 
     while 1:
-#        hmgame.update()
-        if pygame.event.peek() == pygame.QUIT:
-            sys.exit()
+        hmgame.update()
 
 # Main end
 

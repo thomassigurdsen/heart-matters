@@ -57,3 +57,7 @@ class Player(pygame.sprite.Sprite):
 		newpos = self.rect.move((deltaX + self.rect[0]), (deltaY + self.rect[1]))
 		self.rect = newpos
 	# end keyMove
+
+	def resetPosition(self):
+		self.rect[0], self.rect[1] = 0, 0
+	#end resetPosition

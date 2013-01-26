@@ -50,14 +50,43 @@ class HMGame:
 			if event.type == MOUSEBUTTONDOWN:
 				if DEBUG > 1:
 					print(pygame.event.event_name(event.type))
-					print(event.pos)
-					print(event.button)
-				self.player.mouseMove(event.button, event.pos)
-#			if event.key == K_LEFT:
-#			if event.key == K_RIGHT:
-#			if event.key == K_UP:
-#			if event.key == K_DOWN:
-#			if event.type == KEYUP:
+					print(event.button, event.pos)
+				# Mouse buttons are:
+				# 1 = Left
+				# 2 = Middle
+				# 3 = Right
+				if event.button == 1:
+					self.player.mouseMove(event.pos)
+			if event.type == KEYDOWN:
+				if DEBUG > 1:
+						print("Keydown: ", event.key)
+				if event.key == K_LEFT:
+					if DEBUG > 1:
+						print("Keydown: ", event.key)
+				if event.key == K_RIGHT:
+					if DEBUG > 1:
+						print("Keydown: ", event.key)
+				if event.key == K_UP:
+					if DEBUG > 1:
+						print("Keydown: ", event.key)
+				if event.key == K_DOWN:
+					if DEBUG > 1:
+						print("Keydown: ", event.key)
+			if event.type == KEYUP:
+				if DEBUG > 1:
+					print("Keyup: ", event.key)
+				if event.key == K_LEFT:
+					if DEBUG > 1:
+						print("Keyup: ", event.key)
+				if event.key == K_RIGHT:
+					if DEBUG > 1:
+						print("Keyup: ", event.key)
+				if event.key == K_UP:
+					if DEBUG > 1:
+						print("Keyup: ", event.key)
+				if event.key == K_DOWN:
+					if DEBUG > 1:
+						print("Keyup: ", event.key)
 	# eventHandler() end
 
 	def displayUpdate(self):

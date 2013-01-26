@@ -31,17 +31,24 @@ class Player:
 	def __init__ (self):
 		if DEBUG > 2:
 			print("in Player.__init__()")
-		self.sprite = loadimage("res/image/character.png")
-		self.xPos = 0
-		self.yPos = 0
+		pygame.sprite.Sprite.__init__(self)
+		self.image, self.rect = loadimage("res/image/character.png")
+		screen = pygame.display.get_surface()
+		self.scrArea = screen.get_rect()
 	#end __ init__
 
 	def draw(self, screen):
-		screen.blit(self.sprite[0], (self.xPos,self.yPos))
-		# self.sprite[0] is the way to access element 0 of the tuple self.sprite
+		screen.blit(self.image, (self.rect[0], self.rect[1]))
 	#end draw
 
-	def mouseMove(self, button, pos):
+	def mouseMove(self, pos):
 		if DEBUG > 0:
-			print(button, pos)
-	# end move
+			print(pos)
+		newpos = self.rect.move((pos[0] - self.rect[0]), (pos[1] - self.rect[1]))
+		self.rect = newpos
+	# end mouseMove
+
+	def keyMove():
+		if DEBUG > 2:
+			print("in player.keymove")
+	# end keyMove

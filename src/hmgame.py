@@ -57,7 +57,7 @@ class HMGame:
 		self.boundingBoxGroup = pygame.sprite.RenderUpdates((self.gardenWallLong0, self.gardenWallLong1, self.gardenWallShort0, self.gardenWallShort1))
 
 		## Make trees.
-		self.tree = ImageObject("tree.png", ((self.screen.get_size()[0] - 110), 100))
+		self.tree = ImageObject("tree.png", ((self.screen.get_size()[0] - 160), 100), (255,0,255))
 		self.collidingObjectsGroup = pygame.sprite.RenderUpdates((self.tree))
 	# __init__() end
 

@@ -28,14 +28,14 @@ from hmglobals import DEBUG
 class ImageObject(pygame.sprite.Sprite):
 	""" Object class for image-objects.
 	"""
-	def __init__ (self, image, pos):
+	def __init__ (self, image, pos, colorkey=None):
 		if DEBUG > 2:
 			print("in Object.__init__()")
 			print(imagePath)
 
 		imagePath = "res/image/"+image
 		pygame.sprite.Sprite.__init__(self)
-		self.image, self.rect = loadimage(imagePath)
+		self.image, self.rect = loadimage(imagePath, colorkey)
 		screen = pygame.display.get_surface()
 		self.scrArea = screen.get_rect()
 		self.rect = self.rect.move(pos)

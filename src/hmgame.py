@@ -1,6 +1,6 @@
 #! /usr/bin/python
 
-#  heart-matters.py
+#  hmgame.py
 #
 #  Copyright 2013 Thomas Sigurdsen <thomas.sigurdsen@gmail.com>
 #
@@ -21,29 +21,4 @@
 #
 #
 
-import sys, pygame
-sys.path.append('./src/')
-import hmgame
-print(pygame.init())
 
-def main():
-    """ Main function, called at start :P
-    """
-    print("Welcome to Heart Matters!")
-    width = 800
-    height = 600
-    size = width, height
-
-    # The screen is a pygame surface object.
-    screen = pygame.display.set_mode(size, pygame.RESIZABLE)
-
-    while 1:
-#        hmgame.update()
-        if pygame.event.peek() == pygame.QUIT:
-            sys.exit()
-
-# Main end
-
-# This calls the 'main' function when this script is excecuted:
-if __name__ == '__main__':
-    main()

@@ -1,9 +1,5 @@
 heart-matters programmers TODO list:
 
-Player:
-	should be a sprite, move the sprite. We don't care about the
-	position of the player, only of the sprite.
-
 Early rough overview:
 Map
 	array,list,none?

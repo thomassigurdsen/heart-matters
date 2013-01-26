@@ -31,6 +31,7 @@ class HMGame:
 		self.screen = screen
 		self.background = 0,120,100
 		self.player = Player()
+		self.playerSpeed = 10
 	# __init__() end
 
 	def update(self):
@@ -41,12 +42,12 @@ class HMGame:
 	def eventHandler(self):
 		if DEBUG > 2:
 			print("in eventHadler")
+		deltaX = 0
+		deltaY = 0
 		for event in pygame.event.get():
 			if event.type == QUIT:
 				sys.exit(0)
-			if event.type == KEYDOWN:
-				if event.key == K_ESCAPE:
-					sys.exit(0)
+# Mouse input
 			if event.type == MOUSEBUTTONDOWN:
 				if DEBUG > 1:
 					print(pygame.event.event_name(event.type))
@@ -57,36 +58,33 @@ class HMGame:
 				# 3 = Right
 				if event.button == 1:
 					self.player.mouseMove(event.pos)
+# Keuboard input
 			if event.type == KEYDOWN:
-				if DEBUG > 1:
+				if event.key == K_ESCAPE:
+					sys.exit(0)
+				if DEBUG > 2:
 						print("Keydown: ", event.key)
 				if event.key == K_LEFT:
-					if DEBUG > 1:
-						print("Keydown: ", event.key)
+					deltaX -= self.playerSpeed
 				if event.key == K_RIGHT:
-					if DEBUG > 1:
-						print("Keydown: ", event.key)
+					deltaX += self.playerSpeed
 				if event.key == K_UP:
-					if DEBUG > 1:
-						print("Keydown: ", event.key)
+					deltaY -= self.playerSpeed
 				if event.key == K_DOWN:
-					if DEBUG > 1:
-						print("Keydown: ", event.key)
+					deltaY += self.playerSpeed
 			if event.type == KEYUP:
-				if DEBUG > 1:
+				if DEBUG > 2:
 					print("Keyup: ", event.key)
 				if event.key == K_LEFT:
-					if DEBUG > 1:
-						print("Keyup: ", event.key)
+					deltaX += self.playerSpeed
 				if event.key == K_RIGHT:
-					if DEBUG > 1:
-						print("Keyup: ", event.key)
+					deltaX -= self.playerSpeed
 				if event.key == K_UP:
-					if DEBUG > 1:
-						print("Keyup: ", event.key)
+					deltaY += self.playerSpeed
 				if event.key == K_DOWN:
-					if DEBUG > 1:
-						print("Keyup: ", event.key)
+					deltaY -= self.playerSpeed
+			# This will be ran every update. May produce problems, but I don't think so.
+			self.player.keyMove(deltaX, deltaY)
 	# eventHandler() end
 
 	def displayUpdate(self):

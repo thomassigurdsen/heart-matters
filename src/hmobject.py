@@ -30,7 +30,7 @@ class Object(pygame.sprite.Sprite):
 	This could just inherit more or less everything from soundobject and imageobject.
 	We don't do that, because of time and familiarity.
 	"""
-	def __init__ (self, image, sound):
+	def __init__ (self, image, sound, pos):
 		if DEBUG > 2:
 			print("in Object.__init__()")
 			print(imagePath)
@@ -43,7 +43,7 @@ class Object(pygame.sprite.Sprite):
 		self.sound = pygame.mixer.Sound(soundPath)
 		screen = pygame.display.get_surface()
 		self.scrArea = screen.get_rect()
-		self.rect = self.rect.move(400,300)
+		self.rect = self.rect.move(pos)
 		self.playSound()
 	#end __ init__
 

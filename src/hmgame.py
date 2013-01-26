@@ -42,9 +42,12 @@ class HMGame:
 	# update() end
 
 	def eventHandler(self):
+		deltaX = 0
+		deltaY = 0
 		if DEBUG > 2:
 			print("in eventHadler")
 		event = pygame.event.poll()
+
 		if event:
 			self.deltaX = 0
 			self.deltaY = 0
@@ -63,10 +66,12 @@ class HMGame:
 					self.player.mouseMove(event.pos)
 # Keyboard input
 			if event.type == KEYDOWN:
-				if event.key == K_ESCAPE:
-					sys.exit(0)
 				if DEBUG > 2:
 						print("Keydown: ", event.key)
+				if event.key == K_ESCAPE:
+					sys.exit(0)
+				if event.key == K_ESCAPE:
+					sys.exit(0)
 				if event.key == K_LEFT:
 					self.deltaX -= self.playerSpeed
 				if event.key == K_RIGHT:
@@ -89,8 +94,6 @@ class HMGame:
 				if event.key == K_DOWN:
 					self.deltaY = 0
 			# This will be ran every update. May produce problems, but I don't think so.
-			
-			
 		self.player.keyMove(self.deltaX, self.deltaY)
 	# eventHandler() end
 

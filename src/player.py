@@ -42,7 +42,7 @@ class Player(pygame.sprite.Sprite):
 	#end draw
 
 	def mouseMove(self, pos):
-		if DEBUG > 0:
+		if DEBUG > 1:
 			print(pos)
 		newpos = self.rect.move((pos[0] - self.rect[0]), (pos[1] - self.rect[1]))
 		

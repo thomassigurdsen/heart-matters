@@ -28,22 +28,22 @@ from hmgame import *
 print(pygame.init())
 
 def main():
-    """ Main function, called at start :P
-    """
-    print("Welcome to Heart Matters!")
-    width = 800
-    height = 600
-    size = width, height
+	""" Main function, called at start :P
+	"""
+	print("Welcome to Heart Matters!")
+	width = 800
+	height = 600
+	size = width, height
 
-    # The screen is a pygame surface object.
-    screen = pygame.display.set_mode(size, pygame.RESIZABLE)
-    hmgame = HMGame(screen)
+	# The screen is a pygame surface object.
+	screen = pygame.display.set_mode(size, pygame.RESIZABLE)
+	hmgame = HMGame(screen)
 
-    while 1:
-        hmgame.update()
+	while 1:
+		hmgame.update()
 
 # Main end
 
 # This calls the 'main' function when this script is excecuted:
 if __name__ == '__main__':
-    main()
+	main()

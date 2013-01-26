@@ -29,10 +29,6 @@ import pygame, os
 class HMGame:
 	def __init__(self, screen):
 		self.screen = screen
-		
-		#characterFile = os.path.join("res/image","character.png")
-		#character = pygame.image.load(characterFile)
-
 		self.background = 0,120,100
 		self.player = Player()
 
@@ -48,9 +44,7 @@ class HMGame:
 	# eventHandler() end
 
 	def displayUpdate(self):
-		#self.screen.blit(character)
 		print("in displayUpdate")
-		#print("in displayUpdate")
 		self.screen.fill(self.background)
 		# Draw everything after drawing the background
 		self.player.draw(self.screen)

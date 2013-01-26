@@ -20,9 +20,10 @@
 #  MA 02110-1301, USA.
 #
 #
-import pygame
-pygame.init()
+import pygame, sys
+from pygame.locals import *
 from player import *
+pygame.init()
 
 import pygame, os
 
@@ -44,7 +45,19 @@ class HMGame:
 	# update() end
 
 	def eventHandler(self):
-		print("in eventHadler")
+		#print("in eventHadler")
+		for event in pygame.event.get():
+			if event.type == QUIT:
+				sys.exit(0)
+			if event.type == KEYDOWN:
+				if event.key == K_ESCAPE:
+					sys.exit(0)
+				if event.type ==
+#			if event.key == K_LEFT:
+#			if event.key == K_RIGHT:
+#			if event.key == K_UP:
+#			if event.key == K_DOWN:
+#			if event.type == KEYUP:
 	# eventHandler() end
 
 	def displayUpdate(self):

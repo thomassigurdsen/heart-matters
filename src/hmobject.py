@@ -25,7 +25,7 @@ import pygame
 from image import *
 from hmglobals import DEBUG
 
-class Object(pygame.sprite.Sprite):
+class hmObject(pygame.sprite.Sprite):
 	""" Object class for unspecified game world object handling.
 	This could just inherit more or less everything from soundobject and imageobject.
 	We don't do that, because of time and familiarity.

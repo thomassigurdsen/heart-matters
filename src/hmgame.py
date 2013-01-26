@@ -35,9 +35,12 @@ class HMGame:
 		self.background = 0,120,100
 		self.player = Player()
 		
-		self.pushable = pygame.sprite.Group
-		self.heartBeat = Object("character.png","Cardiac_Arrest(Sampler).ogg", (400,500))
+		self.interactive = pygame.sprite.Group
+		self.heartBeat = hmObject("character.png","Cardiac_Arrest(Sampler).ogg", (400,500))
 
+		self.interactive.add(self.heartBeat)
+		
+		#self.heartBeat()
 		self.deltaX = 0
 		self.deltaY = 0
 		self.playerSpeed = 1
@@ -84,7 +87,7 @@ class HMGame:
 				if event.button == 1:
 					self.player.mouseMove(event.pos)
 # Keyboard input
-			if event.type == KEYDOWN and:
+			if event.type == KEYDOWN:
 				if DEBUG > 2:
 						print("Keydown: ", event.key)
 				if event.key == K_ESCAPE:
@@ -102,8 +105,10 @@ class HMGame:
 				if event.key == K_r:
 					self.player.resetPosition()
 				if event.key == K_SPACE:
-					PushSprites = pygame.sprite.spritecollide(self.player,self.pushable,0)
-					print (PushSprites)
+					for interactive in pygame.sprite.spritecollide(self.player,self.interactive,0):
+						print ("interactive hit")
+						interactive.sotp();
+						
 					
 			#end KEYDOWN
 

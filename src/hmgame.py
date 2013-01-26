@@ -42,9 +42,9 @@ class HMGame:
 	def eventHandler(self):
 		if DEBUG > 2:
 			print("in eventHadler")
-		deltaX = 0
-		deltaY = 0
 		for event in pygame.event.get():
+			deltaX = 0
+			deltaY = 0
 			if event.type == QUIT:
 				sys.exit(0)
 # Mouse input
@@ -58,7 +58,7 @@ class HMGame:
 				# 3 = Right
 				if event.button == 1:
 					self.player.mouseMove(event.pos)
-# Keuboard input
+# Keyboard input
 			if event.type == KEYDOWN:
 				if event.key == K_ESCAPE:
 					sys.exit(0)
@@ -72,6 +72,8 @@ class HMGame:
 					deltaY -= self.playerSpeed
 				if event.key == K_DOWN:
 					deltaY += self.playerSpeed
+				if event.key == K_r:
+					self.player.resetPosition()
 			if event.type == KEYUP:
 				if DEBUG > 2:
 					print("Keyup: ", event.key)

@@ -20,10 +20,15 @@
 #  MA 02110-1301, USA.
 #
 #
+import pygame
+pygame.init()
+from player import *
 
 class HMGame:
 	def __init__(self, screen):
 		self.screen = screen
+		self.background = 0,120,100
+		self.player = Player()
 	# __init__() end
 
 	def update(self):
@@ -36,5 +41,10 @@ class HMGame:
 	# eventHandler() end
 
 	def displayUpdate(self):
-		print("in displayUpdate")
+		#print("in displayUpdate")
+		self.screen.fill(self.background)
+		# Draw everything after drawing the background
+
+		# Flip the display after drawing, so stuff shows up on screen
+		pygame.display.flip()
 	# displayUpdate() end

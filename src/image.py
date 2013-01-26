@@ -1,6 +1,7 @@
-#! /usr/bin/python
+#!/usr/bin/env python
 
-#  heart-matters.py
+#
+#  image.py
 #
 #  Copyright 2013 Thomas Sigurdsen <thomas.sigurdsen@gmail.com>
 #
@@ -19,30 +20,20 @@
 #  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
 #  MA 02110-1301, USA.
 #
-#
+import pygame
+from pygame.locals import RLEACCEL
 
-import sys, pygame
-sys.path.append('./src/')
-from hmgame import *
-print(pygame.init())
-
-def main():
-	""" Main function, called at start :P
-	"""
-	print("Welcome to Heart Matters!")
-	width = 800
-	height = 600
-	size = width, height
-
-	# The screen is a pygame surface object.
-	screen = pygame.display.set_mode(size, pygame.RESIZABLE)
-	hmgame = HMGame(screen)
-
-	while 1:
-		hmgame.update()
-
-# Main end
-
-# This calls the 'main' function when this script is excecuted:
-if __name__ == '__main__':
-	main()
+def loadimage(path, colorkey=None):
+    """Path is the full relative path to the image file being used,
+    colorkey is the colorkey to be used, if any."""
+    try:
+        image = pygame.image.load(path)
+    except pygame.error, message:
+        print 'Cannot load image:', path
+        raise SystemExit, message
+    image = image.convert()
+    if colorkey is not None:
+        if colorkey is -1:
+            colorkey = image.get_at((0,0))
+        image.set_colorkey(colorkey, RLEACCEL)
+    return image, image.get_rect()

@@ -32,13 +32,16 @@ class HMGame:
 		self.screen = screen
 		self.background = 0,120,100
 		self.player = Player()
-		#self.testObject = Object("Mars1.png","test.ogg")
+		self.heartBeat = Object("Mars1.png","Cardiac_Arrest(Sampler).ogg")
 		self.playerSpeed = 5
+		self.deltaX = 0
+		self.deltaY = 0
 	# __init__() end
 
 	def update(self):
 		self.eventHandler()
 		self.displayUpdate()
+		self.heartBeat.volumeControler(self.player.rect.copy())
 	# update() end
 
 	def eventHandler(self):
@@ -49,8 +52,7 @@ class HMGame:
 		#event = pygame.event.get()
 
 		for event in pygame.event.get():
-			#self.deltaX = 0
-			#self.deltaY = 0
+			
 			if event.type == QUIT:
 				sys.exit(0)
 # Mouse input

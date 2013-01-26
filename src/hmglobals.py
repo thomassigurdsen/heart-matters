@@ -1,6 +1,6 @@
 #! /usr/bin/python
 
-#  player.py
+#  globals.py
 #
 #  Copyright 2013 Thomas Sigurdsen <thomas.sigurdsen@gmail.com>
 #
@@ -21,27 +21,19 @@
 #
 #
 
-import pygame
-from image import *
-from hmglobals import DEBUG
+####################################################################################################
+####################################	DO NOT USE THIS FILE UNLESS ABSOLUTELY NECESSARY!	########
+####################################################################################################
 
-class Player:
-	""" The player class, the one and only controlled character in the game.
-	"""
-	def __init__ (self):
-		if DEBUG > 2:
-			print("in Player.__init__()")
-		self.sprite = loadimage("res/image/character.png")
-		self.xPos = 0
-		self.yPos = 0
-	#end __ init__
+### The DEBUG flag, change it to change level of debug info:
+## 0: No debug info[1]
+## 1: First level of debug messages, should only print information
+## relevant to what is being worked on.
+## 2: Second level debug, this is where almost all messages live.
+## 3: Third level debug, this is for verbose or frequently repeated
+## debug messages.
+##
+## [1]: This will not be true until the debug flag has been implemented
+## project wide.
 
-	def draw(self, screen):
-		screen.blit(self.sprite[0], (self.xPos,self.yPos))
-		# self.sprite[0] is the way to access element 0 of the tuple self.sprite
-	#end draw
-
-	def mouseMove(self, button, pos):
-		if DEBUG > 0:
-			print(button, pos)
-	# end move
+DEBUG = 1

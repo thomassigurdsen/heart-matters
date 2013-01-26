@@ -20,25 +20,11 @@
 #  MA 02110-1301, USA.
 #
 #
-import pygame, sys
+import pygame, sys, os
 from pygame.locals import *
 from player import *
+from hmglobals import DEBUG
 pygame.init()
-
-import pygame, os
-
-### The DEBUG flag, change it to change level of debug info:
-## 0: No debug info[1]
-## 1: First level of debug messages, should only print information
-## relevant to what is being worked on.
-## 2: Second level debug, this is where almost all messages live.
-## 3: Third level debug, this is for verbose or frequently repeated
-## debug messages.
-##
-## [1]: This will not be true until the debug flag has been implemented
-## project wide.
-
-DEBUG = 1
 
 class HMGame:
 	def __init__(self, screen):

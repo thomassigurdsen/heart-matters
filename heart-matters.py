@@ -23,7 +23,8 @@
 
 import sys, pygame
 sys.path.append('./src/')
-import hmgame
+#import hmgame
+from hmgame import *
 print(pygame.init())
 
 def main():
@@ -43,6 +44,10 @@ def main():
         for event in pygame.event.get():
             if event.type == pygame.QUIT: 
                 sys.exit()
+				
+            hmgame = HMGame(screen)
+            hmgame.update()
+	
 # Main end
 
 

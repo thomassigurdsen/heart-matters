@@ -37,15 +37,11 @@ def main():
 	# The screen is a pygame surface object.
 	screen = pygame.display.set_mode(size, pygame.RESIZABLE)
 	pygame.display.set_caption('Monkey Fever')
+	hmgame = HMGame(screen)
 
 	while 1:
-#		hmgame.update()
-		for event in pygame.event.get():
-			if event.type == pygame.QUIT: 
-				sys.exit()
-				
-			hmgame = HMGame(screen)
-			hmgame.update()
+		hmgame.update()
+
 # Main end
 
 

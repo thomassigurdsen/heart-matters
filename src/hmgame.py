@@ -30,7 +30,7 @@ import pygame, os
 class HMGame:
 	def __init__(self, screen):
 		self.screen = screen
-		
+
 		#characterFile = os.path.join("res/image","character.png")
 		#character = pygame.image.load(characterFile)
 
@@ -52,7 +52,7 @@ class HMGame:
 			if event.type == KEYDOWN:
 				if event.key == K_ESCAPE:
 					sys.exit(0)
-				if event.type ==
+#				if event.type ==
 #			if event.key == K_LEFT:
 #			if event.key == K_RIGHT:
 #			if event.key == K_UP:

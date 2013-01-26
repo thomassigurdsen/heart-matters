@@ -33,7 +33,7 @@ class HMGame:
 		self.background = 0,120,100
 		self.player = Player()
 
-		self.heartBeat = Object("Mars1.png","Cardiac_Arrest(Sampler).ogg")
+		self.heartBeat = Object("character.png","Cardiac_Arrest(Sampler).ogg")
 		self.playerSpeed = 5
 		self.deltaX = 0
 		self.deltaY = 0
@@ -117,6 +117,7 @@ class HMGame:
 		self.screen.fill(self.background)
 		# Draw everything after drawing the background
 		self.player.draw(self.screen)
+		self.heartBeat.draw(self.screen)
 		# Flip the display after drawing, so stuff shows up on screen
 		pygame.display.flip()
 	# displayUpdate() end

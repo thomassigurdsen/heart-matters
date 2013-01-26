@@ -36,21 +36,26 @@ class HMGame:
 		self.player = Player()
 		
 		self.pushable = pygame.sprite.Group
+		self.heartBeat = Object("character.png","Cardiac_Arrest(Sampler).ogg", (400,500))
 
-		self.heartBeat = Object("character.png","Cardiac_Arrest(Sampler).ogg")
 		self.playerSpeed = 0.5
 		self.deltaX = 0
 		self.deltaY = 0
-
 		self.playerSpeed = 2
-		self.boundingBox = self.screen.get_rect()
-		self.boundingBox.clamp(self.player.rect)
-		print(self.boundingBox.contains(self.player.rect))
 
+		## Make wall bounding-box.
+		self.gardenWallLong0 = ImageObject("gardenWallLong.png", (0, 0))
+		self.gardenWallLong1 = ImageObject("gardenWallLong.png", (0, (self.screen.get_size()[1] - 10)))
+		self.gardenWallShort0 = ImageObject("gardenWallShort.png", (0, 0))
+		self.gardenWallShort1 = ImageObject("gardenWallShort.png", ((self.screen.get_size()[0] - 10), 0))
+		self.boundingBoxGroup = pygame.sprite.RenderUpdates((self.gardenWallLong0, self.gardenWallLong1, self.gardenWallShort0, self.gardenWallShort1))
 	# __init__() end
 
 	def update(self):
 		self.eventHandler()
+		# check for collisions with boundingBoxGroup
+		for wall in pygame.sprite.spritecollide(self.player, self.boundingBoxGroup, False):
+			print("COLLISION")
 		self.displayUpdate()
 		self.heartBeat.volumeControler(self.player.rect.copy())
 	# update() end
@@ -124,6 +129,10 @@ class HMGame:
 			print("in displayUpdate")
 		self.screen.fill(self.background)
 		# Draw everything after drawing the background
+		self.gardenWallLong0.draw(self.screen)
+		self.gardenWallLong1.draw(self.screen)
+		self.gardenWallShort0.draw(self.screen)
+		self.gardenWallShort1.draw(self.screen)
 		self.player.draw(self.screen)
 		self.heartBeat.draw(self.screen)
 		# Flip the display after drawing, so stuff shows up on screen

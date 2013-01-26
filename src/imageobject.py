@@ -28,7 +28,7 @@ from hmglobals import DEBUG
 class ImageObject(pygame.sprite.Sprite):
 	""" Object class for image-objects.
 	"""
-	def __init__ (self, image):
+	def __init__ (self, image, pos):
 		if DEBUG > 2:
 			print("in Object.__init__()")
 			print(imagePath)
@@ -38,7 +38,7 @@ class ImageObject(pygame.sprite.Sprite):
 		self.image, self.rect = loadimage(imagePath)
 		screen = pygame.display.get_surface()
 		self.scrArea = screen.get_rect()
-		self.rect = self.rect.move(400,300)
+		self.rect = self.rect.move(pos)
 	#end __ init__
 
 	def draw(self, screen):

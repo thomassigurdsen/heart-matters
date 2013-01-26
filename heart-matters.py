@@ -30,13 +30,13 @@ def main():
 	""" Main function, called at start :P
 	"""
 	print("Welcome to Heart Matters!")
-	width = 800
-	height = 600
+	width = 1024
+	height = 768
 	size = width, height
 
 	# The screen is a pygame surface object.
 	screen = pygame.display.set_mode(size, pygame.RESIZABLE)
-	pygame.display.set_caption('Monkey Fever')
+	pygame.display.set_caption('Heart Matters')
 	hmgame = HMGame(screen)
 
 	while 1:

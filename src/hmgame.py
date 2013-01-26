@@ -38,6 +38,7 @@ class HMGame:
 		self.interactive = pygame.sprite.Group
 		self.heartBeat = hmObject("character.png","Cardiac_Arrest(Sampler).ogg", (400,500))
 
+
 		self.interactive.add(self.heartBeat)
 		
 		#self.heartBeat()
@@ -57,9 +58,11 @@ class HMGame:
 		self.eventHandler()
 		# check for collisions with boundingBoxGroup
 		for wall in pygame.sprite.spritecollide(self.player, self.boundingBoxGroup, False):
-			print("COLLISION")
+			if DEBUG > 1:
+				print("COLLISION")
+			self.player.keyMove(-self.deltaX, -self.deltaY)
 			self.deltaX = 0
-			self.delyY = 0
+			self.deltaY = 0
 		self.displayUpdate()
 		self.heartBeat.volumeControler(self.player.rect.copy())
 	# update() end
@@ -108,8 +111,6 @@ class HMGame:
 					for interactive in pygame.sprite.spritecollide(self.player,self.interactive,0):
 						print ("interactive hit")
 						interactive.sotp();
-						
-					
 			#end KEYDOWN
 
 			if event.type == KEYUP:

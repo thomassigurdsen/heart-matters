@@ -35,15 +35,15 @@ class HMGame:
 		self.screen = screen
 		self.background = 0,120,100
 		self.player = Player()
-		
+
 		self.interactive = pygame.sprite.Group()
 		self.wheel = hmObject("character.png","creakywheel.ogg", (924,200))
 		self.heartBeat = SoundObject("heartbeat.ogg", (400,500))
-				
+
 		self.interactive.add(self.heartBeat)
 		self.interactive.add(self.wheel)
 		
-		
+
 		#self.heartBeat()
 		self.deltaX = 0
 		self.deltaY = 0
@@ -55,6 +55,10 @@ class HMGame:
 		self.gardenWallShort0 = ImageObject("gardenWallShort.png", (0, 0))
 		self.gardenWallShort1 = ImageObject("gardenWallShort.png", ((self.screen.get_size()[0] - 10), 0))
 		self.boundingBoxGroup = pygame.sprite.RenderUpdates((self.gardenWallLong0, self.gardenWallLong1, self.gardenWallShort0, self.gardenWallShort1))
+
+		## Make trees.
+		self.tree = ImageObject("tree.png", ((self.screen.get_size()[0] - 110), 100))
+		self.collidingObjectsGroup = pygame.sprite.RenderUpdates((self.tree))
 	# __init__() end
 
 	def update(self):
@@ -62,10 +66,17 @@ class HMGame:
 		# check for collisions with boundingBoxGroup
 		for wall in pygame.sprite.spritecollide(self.player, self.boundingBoxGroup, False):
 			if DEBUG > 1:
-				print("COLLISION")
+				print("COLLISION: WALL")
 			self.player.keyMove(-self.deltaX, -self.deltaY)
 			self.deltaX = 0
 			self.deltaY = 0
+		# check for collisions with collidingObjectsGroup, player first:
+		for collidable in pygame.sprite.spritecollide(self.player, self.collidingObjectsGroup, False):
+			if DEBUG > 1:
+				print("COLLISION: COLLIDABLE")
+			self.player.keyMove(-self.deltaX, -self.deltaY)
+			#self.deltaX = 0
+			#self.deltaY = 0
 		self.displayUpdate()
 		self.heartBeat.volumeControler(self.player.rect.copy())
 	# update() end
@@ -112,8 +123,9 @@ class HMGame:
 					self.player.resetPosition()
 				if event.key == K_SPACE:
 					for interactive in pygame.sprite.spritecollide(self.player, self.interactive, False):
-						print ("interactive hit")
-						interactive.stopSound();
+						if DEBUG > 1:
+							print ("interactive hit")
+						interactive.stopSound()
 			#end KEYDOWN
 
 			if event.type == KEYUP:
@@ -128,7 +140,6 @@ class HMGame:
 				if event.key == K_DOWN:
 					self.deltaY = 0
 			#End KEYUP
-
 		#End for-loop (event.pull())
 		# This will be ran every update. May produce problems, but I don't think so.
 		self.player.keyMove(self.deltaX, self.deltaY)
@@ -143,6 +154,7 @@ class HMGame:
 		self.gardenWallLong1.draw(self.screen)
 		self.gardenWallShort0.draw(self.screen)
 		self.gardenWallShort1.draw(self.screen)
+		self.tree.draw(self.screen)
 		self.player.draw(self.screen)
 		self.wheel.draw(self.screen)
 		# Flip the display after drawing, so stuff shows up on screen

@@ -29,29 +29,29 @@ class Object:
 	""" Object class for unspecified game world object handling.
 	"""
 	def __init__ (self, image, sound):
-		imagePath = "res/image/"+image
-		soundPath = "res/sound"+sound
-		
-		print(imagePath)
-		print(soundPath)
 		if DEBUG > 2:
 			print("in Object.__init__()")
-		#pygame.sprite.Sprite.__init__(self)
-		#self.image, self.rect = loadimage()
-		#self.sound = pygame.mixer.Sound()
-		#screen = pygame.display.get_surface()
-		#self.scrArea = screen.get_rect()
-		#self.sound.mixer.music.play(-1,0,0)
+			print(imagePath)
+			print(soundPath)
+
+		imagePath = "res/image/"+image
+		soundPath = "res/sound/"+sound
+		pygame.sprite.Sprite.__init__(self)
+		self.image, self.rect = loadimage(imagePath)
+		self.sound = pygame.mixer.Sound(soundPath)
+		screen = pygame.display.get_surface()
+		self.scrArea = screen.get_rect()
+		self.playSound()
 	#end __ init__
 
 	def draw(self, screen):
 		screen.blit(self.image, (self.rect[0], self.rect[1]))
 	#end draw
 	
-	def play(self):
-		self.play(-1, 0.0)
+	def playSound(self):
+		self.sound.play(-1)
 	#play end
 	
-	def stop(self):
-		self.stop()
+	def stopSound(self):
+		self.sound.stop()
 	#play end

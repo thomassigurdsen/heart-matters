@@ -24,7 +24,7 @@
 import sys, pygame, os
 sys.path.append('./src/')
 from hmgame import *
-print(pygame.init())
+pygame.init()
 
 def main():
 	""" Main function, called at start :P

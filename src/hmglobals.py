@@ -36,4 +36,4 @@
 ## [1]: This will not be true until the debug flag has been implemented
 ## project wide.
 
-DEBUG = 1
+DEBUG = 2

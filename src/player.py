@@ -25,7 +25,7 @@ import pygame
 from image import *
 from hmglobals import DEBUG
 
-class Player:
+class Player(pygame.sprite.Sprite):
 	""" The player class, the one and only controlled character in the game.
 	"""
 	def __init__ (self):
@@ -43,12 +43,17 @@ class Player:
 
 	def mouseMove(self, pos):
 		if DEBUG > 0:
-			print(pos)
+			#print(pos)
 		newpos = self.rect.move((pos[0] - self.rect[0]), (pos[1] - self.rect[1]))
+		print(newpos)
 		self.rect = newpos
 	# end mouseMove
 
-	def keyMove():
+	def keyMove(self, deltaX, deltaY):
 		if DEBUG > 2:
 			print("in player.keymove")
+		if DEBUG > 0:
+			print("dx, dy: ", deltaX, deltaY)
+		newpos = self.rect.move((deltaX + self.rect[0]), (deltaY + self.rect[1]))
+		self.rect = newpos
 	# end keyMove

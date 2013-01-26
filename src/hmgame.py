@@ -20,18 +20,17 @@
 #  MA 02110-1301, USA.
 #
 #
-import pygame
-pygame.init()
+import pygame, sys, os
+from pygame.locals import *
 from player import *
-
-import pygame, os
+from hmglobals import DEBUG
+pygame.init()
 
 class HMGame:
 	def __init__(self, screen):
 		self.screen = screen
 		self.background = 0,120,100
 		self.player = Player()
-
 	# __init__() end
 
 	def update(self):
@@ -40,11 +39,30 @@ class HMGame:
 	# update() end
 
 	def eventHandler(self):
-		print("in eventHadler")
+		if DEBUG > 2:
+			print("in eventHadler")
+		for event in pygame.event.get():
+			if event.type == QUIT:
+				sys.exit(0)
+			if event.type == KEYDOWN:
+				if event.key == K_ESCAPE:
+					sys.exit(0)
+			if event.type == MOUSEBUTTONDOWN:
+				if DEBUG > 1:
+					print(pygame.event.event_name(event.type))
+					print(event.pos)
+					print(event.button)
+				self.player.mouseMove(event.button, event.pos)
+#			if event.key == K_LEFT:
+#			if event.key == K_RIGHT:
+#			if event.key == K_UP:
+#			if event.key == K_DOWN:
+#			if event.type == KEYUP:
 	# eventHandler() end
 
 	def displayUpdate(self):
-		print("in displayUpdate")
+		if DEBUG > 2:
+			print("in displayUpdate")
 		self.screen.fill(self.background)
 		# Draw everything after drawing the background
 		self.player.draw(self.screen)

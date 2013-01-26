@@ -96,7 +96,8 @@ class HMGame:
 				if event.key == K_r:
 					self.player.resetPosition()
 				if event.key == K_SPACE:
-					PushSprites = pygame.sprite.spritecollide(self.palyer,self.pushable,0)
+					PushSprites = pygame.sprite.spritecollide(self.player,self.pushable,0)
+					print (PushSprites)
 					
 			#end KEYDOWN
 

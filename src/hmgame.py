@@ -35,10 +35,9 @@ class HMGame:
 		self.background = 0,120,100
 		self.player = Player()
 		
-		self.interactive = pygame.sprite.Group
+		self.interactive = pygame.sprite.Group()
 		self.heartBeat = hmObject("character.png","Cardiac_Arrest(Sampler).ogg", (400,500))
-
-
+				
 		self.interactive.add(self.heartBeat)
 		
 		#self.heartBeat()
@@ -108,9 +107,9 @@ class HMGame:
 				if event.key == K_r:
 					self.player.resetPosition()
 				if event.key == K_SPACE:
-					for interactive in pygame.sprite.spritecollide(self.player,self.interactive,0):
+					for interactive in pygame.sprite.spritecollide(self.player, self.interactive, False):
 						print ("interactive hit")
-						interactive.sotp();
+						interactive.stopSound();
 			#end KEYDOWN
 
 			if event.type == KEYUP:

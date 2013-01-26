@@ -23,6 +23,7 @@
 import pygame, sys, os
 from pygame.locals import *
 from player import *
+from object import *
 from hmglobals import DEBUG
 pygame.init()
 
@@ -31,6 +32,7 @@ class HMGame:
 		self.screen = screen
 		self.background = 0,120,100
 		self.player = Player()
+		self.testObject = Object("Mars1.png","test.ogg")
 	# __init__() end
 
 	def update(self):

@@ -76,13 +76,13 @@ class HMGame:
 				if DEBUG > 2:
 					print("Keyup: ", event.key)
 				if event.key == K_LEFT:
-					deltaX += self.playerSpeed
+					deltaX = 0
 				if event.key == K_RIGHT:
-					deltaX -= self.playerSpeed
+					deltaX = 0
 				if event.key == K_UP:
-					deltaY += self.playerSpeed
+					deltaY = 0
 				if event.key == K_DOWN:
-					deltaY -= self.playerSpeed
+					deltaY = 0
 			# This will be ran every update. May produce problems, but I don't think so.
 			self.player.keyMove(deltaX, deltaY)
 	# eventHandler() end

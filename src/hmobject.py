@@ -59,7 +59,7 @@ class Object(pygame.sprite.Sprite):
 		self.sound.stop()
 	#play end
 
-def volumeControler(self,playerPos):		
+	def volumeControler(self,playerPos):		
 		difX = 0
 		difY = 0
 		volume= 0.0

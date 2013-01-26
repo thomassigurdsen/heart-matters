@@ -1,8 +1,8 @@
 #! /usr/bin/python
 
-#  player.py
+#  imageobject.py
 #
-#  Copyright 2013 Thomas Sigurdsen <thomas.sigurdsen@gmail.com>
+#  Copyright 2013 Harry Nystad <harryjnystad@gmail.com>
 #
 #  This program is free software; you can redistribute it and/or modify
 #  it under the terms of the GNU General Public License as published by
@@ -25,39 +25,22 @@ import pygame
 from image import *
 from hmglobals import DEBUG
 
-class Player(pygame.sprite.Sprite):
-	""" The player class, the one and only controlled character in the game.
+class ImageObject(pygame.sprite.Sprite):
+	""" Object class for unspecified game world object handling.
 	"""
-	def __init__ (self):
+	def __init__ (self, image):
 		if DEBUG > 2:
-			print("in Player.__init__()")
+			print("in Object.__init__()")
+			print(imagePath)
+
+		imagePath = "res/image/"+image
 		pygame.sprite.Sprite.__init__(self)
-		self.image, self.rect = loadimage("res/image/character.png")
+		self.image, self.rect = loadimage(imagePath)
 		screen = pygame.display.get_surface()
 		self.scrArea = screen.get_rect()
+		self.rect = self.rect.move(400,300)
 	#end __ init__
 
 	def draw(self, screen):
 		screen.blit(self.image, (self.rect[0], self.rect[1]))
 	#end draw
-
-	def mouseMove(self, pos):
-		if DEBUG > 2:
-			print(pos)
-		newpos = self.rect.move((pos[0] - self.rect[0]), (pos[1] - self.rect[1]))
-
-		self.rect = newpos
-	# end mouseMove
-
-	def keyMove(self, deltaX, deltaY):
-		if DEBUG > 2:
-			print("in player.keymove")
-		if DEBUG > 2:
-			print("dx, dy: ", deltaX, deltaY)
-		newpos = self.rect.move((deltaX), (deltaY))
-		self.rect = newpos
-	# end keyMove
-
-	def resetPosition(self):
-		self.rect[0], self.rect[1] = 0, 0
-	#end resetPosition

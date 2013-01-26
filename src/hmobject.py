@@ -56,38 +56,33 @@ class Object(pygame.sprite.Sprite):
 	def stopSound(self):
 		self.sound.stop()
 	#play end
-		
-	def draw(self, screen):
-		screen.blit(self.image, (self.rect[0], self.rect[1]))
-	#end draw
-	
-	def volumeControler(self,playerPos):		
+
+	def volumeControler(self,playerPos):
 		difX = 0
 		difY = 0
-		
+
 		difX = playerPos[0] - self.rect[0]
 		difY = playerPos[1] - self.rect[1]
-		
+
 		difpos = pygame.math.Vector2(difX,difY)
 		#difpos = playerPos - self.rect
 		#vectorLengt = difpos.length()
 		#if DEBUG > 2:
 			#print (difpos.length())
-		
+
 		if difpos.length() > 0.0:
 			newVolume = difpos.normalize()
 			if newVolume[0] > newVolume[1]:
 				self.sound.set_volume(newVolume[0]/2)
 				#print ("x: ")
-				print(newVolume[0])
+				if DEBUG > 1:
+					print(newVolume[0])
 			else:
 				self.sound.set_volume(newVolume[1]/2)
 				#print ("y: ")
-				print(newVolume[1])
-			
+				if DEBUG > 1:
+					print(newVolume[1])
+
 			#self.sound.set_volume(newVolume/100)
 			#print (newVolume/100)
 	#end volumControler
-
-	
-	

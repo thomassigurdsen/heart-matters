@@ -23,7 +23,9 @@
 import pygame, sys, os
 from pygame.locals import *
 from player import *
-from object import *
+from hmobject import *
+from imageobject import *
+from soundobject import *
 from hmglobals import DEBUG
 pygame.init()
 
@@ -59,7 +61,7 @@ class HMGame:
 		#event = pygame.event.get()
 
 		for event in pygame.event.get():
-			
+
 			if event.type == QUIT:
 				sys.exit(0)
 # Mouse input
@@ -92,9 +94,9 @@ class HMGame:
 				if event.key == K_r:
 					self.player.resetPosition()
 			#end KEYDOWN
-			
+
 			if event.type == KEYUP:
-				if DEBUG > 0:
+				if DEBUG > 1:
 					print("Keyup: ", event.key)
 				if event.key == K_LEFT:
 					self.deltaX = 0
@@ -105,7 +107,7 @@ class HMGame:
 				if event.key == K_DOWN:
 					self.deltaY = 0
 			#End KEYUP
-		
+
 		#End for-loop (event.pull())
 		# This will be ran every update. May produce problems, but I don't think so.
 		self.player.keyMove(self.deltaX, self.deltaY)

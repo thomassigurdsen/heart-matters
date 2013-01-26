@@ -28,9 +28,9 @@ def loadimage(path, colorkey=None):
     colorkey is the colorkey to be used, if any."""
     try:
         image = pygame.image.load(path)
-    except pygame.error, message:
-        print 'Cannot load image:', path
-        raise SystemExit, message
+    except pygame.error as message:
+        print('Cannot load image:', path)
+        raise(SystemExit, message)
     image = image.convert()
     if colorkey is not None:
         if colorkey is -1:

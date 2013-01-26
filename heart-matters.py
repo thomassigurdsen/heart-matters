@@ -36,13 +36,15 @@ def main():
 
     # The screen is a pygame surface object.
     screen = pygame.display.set_mode(size, pygame.RESIZABLE)
+    pygame.display.set_caption('Monkey Fever')
 
     while 1:
-#        hmgame.update()
-        if pygame.event.peek() == pygame.QUIT:
-            sys.exit()
-
+#       hmgame.update()
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT: 
+                sys.exit()
 # Main end
+
 
 # This calls the 'main' function when this script is excecuted:
 if __name__ == '__main__':

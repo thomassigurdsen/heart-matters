@@ -21,28 +21,28 @@
 #
 #
 
-
+import pygame, os
 
 class HMGame:
-    def __init__(self, screen):
-        self.screen = screen
-		characterFile = os.path.join("res/image","character.png")
-        character = pygame.image.load(characterFile)
-    # __init__() end
+	def __init__(self, screen):
+		self.screen = screen
+		#characterFile = os.path.join("res/image","character.png")
+		#character = pygame.image.load(characterFile)
+	# __init__() end
 
-    def update(self):
-        self.eventHandler()
-        self.displayUpdate()
-    # update() end
+	def update(self):
+		self.eventHandler()
+		self.displayUpdate()
+	# update() end
 
-    def eventHandler(self):
-        print("in eventHadler")
-    # eventHandler() end
+	def eventHandler(self):
+		print("in eventHadler")
+	# eventHandler() end
 
-    def displayUpdate(self):
-        print("in displayUpdate")
-        greenColor = 0, 255, 0 
-        screen.fill(greenColor)
-        screen.blit(character)
-        pygame.display.flip()
-    # displayUpdate() end
+	def displayUpdate(self):
+		print("in displayUpdate")
+		greenColor = 0, 255, 0 
+		self.screen.fill(greenColor)
+		#self.screen.blit(character)
+		pygame.display.flip()
+	# displayUpdate() end

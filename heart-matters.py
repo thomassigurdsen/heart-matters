@@ -21,36 +21,35 @@
 #
 #
 
-import sys, pygame
+import sys, pygame, os
 sys.path.append('./src/')
 #import hmgame
 from hmgame import *
 print(pygame.init())
 
 def main():
-    """ Main function, called at start :P
-    """
-    print("Welcome to Heart Matters!")
-    width = 800
-    height = 600
-    size = width, height
+	""" Main function, called at start :P
+	"""
+	print("Welcome to Heart Matters!")
+	width = 800
+	height = 600
+	size = width, height
 
-    # The screen is a pygame surface object.
-    screen = pygame.display.set_mode(size, pygame.RESIZABLE)
-    pygame.display.set_caption('Monkey Fever')
+	# The screen is a pygame surface object.
+	screen = pygame.display.set_mode(size, pygame.RESIZABLE)
+	pygame.display.set_caption('Monkey Fever')
 
-    while 1:
-#       hmgame.update()
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT: 
-                sys.exit()
+	while 1:
+#		hmgame.update()
+		for event in pygame.event.get():
+			if event.type == pygame.QUIT: 
+				sys.exit()
 				
-            hmgame = HMGame(screen)
-            hmgame.update()
-	
+			hmgame = HMGame(screen)
+			hmgame.update()
 # Main end
 
 
 # This calls the 'main' function when this script is excecuted:
 if __name__ == '__main__':
-    main()
+	main()

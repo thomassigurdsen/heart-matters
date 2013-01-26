@@ -36,11 +36,11 @@ class HMGame:
 		self.player = Player()
 
 		self.heartBeat = Object("character.png","Cardiac_Arrest(Sampler).ogg")
-		self.playerSpeed = 5
+		self.playerSpeed = 2
 		self.deltaX = 0
 		self.deltaY = 0
 
-		self.playerSpeed = 5
+		self.playerSpeed = 2
 		self.boundingBox = self.screen.get_rect()
 		self.boundingBox.clamp(self.player.rect)
 		print(self.boundingBox.contains(self.player.rect))

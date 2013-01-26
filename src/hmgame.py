@@ -38,10 +38,9 @@ class HMGame:
 		self.pushable = pygame.sprite.Group
 		self.heartBeat = Object("character.png","Cardiac_Arrest(Sampler).ogg", (400,500))
 
-		self.playerSpeed = 0.5
 		self.deltaX = 0
 		self.deltaY = 0
-		self.playerSpeed = 2
+		self.playerSpeed = 1
 
 		## Make wall bounding-box.
 		self.gardenWallLong0 = ImageObject("gardenWallLong.png", (0, 0))
@@ -56,6 +55,8 @@ class HMGame:
 		# check for collisions with boundingBoxGroup
 		for wall in pygame.sprite.spritecollide(self.player, self.boundingBoxGroup, False):
 			print("COLLISION")
+			self.deltaX = 0
+			self.delyY = 0
 		self.displayUpdate()
 		self.heartBeat.volumeControler(self.player.rect.copy())
 	# update() end
@@ -83,7 +84,7 @@ class HMGame:
 				if event.button == 1:
 					self.player.mouseMove(event.pos)
 # Keyboard input
-			if event.type == KEYDOWN:
+			if event.type == KEYDOWN and:
 				if DEBUG > 2:
 						print("Keydown: ", event.key)
 				if event.key == K_ESCAPE:

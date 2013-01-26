@@ -32,8 +32,10 @@ class HMGame:
 		self.screen = screen
 		self.background = 0,120,100
 		self.player = Player()
-		#self.testObject = Object("Mars1.png","test.ogg")
+		#self.testObject = Object("Mars1.png","test.ogg") ## Sound, right here<<
 		self.playerSpeed = 5
+		self.boundingBox = self.screen.get_rect()
+		self.boundingBox.clamp(self.player.rect)
 	# __init__() end
 
 	def update(self):

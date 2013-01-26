@@ -26,7 +26,7 @@ from image import *
 from hmglobals import DEBUG
 
 class SoundObject(pygame.sprite.Sprite):
-	""" Object class for unspecified game world object handling.
+	""" Object class for sound-objects.
 	"""
 	def __init__ (self, sound):
 		if DEBUG > 2:

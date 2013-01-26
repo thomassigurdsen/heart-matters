@@ -26,7 +26,7 @@ from image import *
 from hmglobals import DEBUG
 
 class ImageObject(pygame.sprite.Sprite):
-	""" Object class for unspecified game world object handling.
+	""" Object class for image-objects.
 	"""
 	def __init__ (self, image):
 		if DEBUG > 2:

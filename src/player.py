@@ -52,7 +52,7 @@ class Player(pygame.sprite.Sprite):
 	def keyMove(self, deltaX, deltaY):
 		if DEBUG > 2:
 			print("in player.keymove")
-		if DEBUG > 0:
+		if DEBUG > 1:
 			print("dx, dy: ", deltaX, deltaY)
 		newpos = self.rect.move((deltaX), (deltaY))
 		self.rect = newpos

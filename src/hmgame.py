@@ -46,11 +46,11 @@ class HMGame:
 		deltaY = 0
 		if DEBUG > 2:
 			print("in eventHadler")
-		event = pygame.event.poll()
+		#event = pygame.event.get()
 
-		if event:
-			self.deltaX = 0
-			self.deltaY = 0
+		for event in pygame.event.get():
+			#self.deltaX = 0
+			#self.deltaY = 0
 			if event.type == QUIT:
 				sys.exit(0)
 # Mouse input
@@ -82,8 +82,10 @@ class HMGame:
 					self.deltaY += self.playerSpeed
 				if event.key == K_r:
 					self.player.resetPosition()
+			#end KEYDOWN
+			
 			if event.type == KEYUP:
-				if DEBUG > 2:
+				if DEBUG > 0:
 					print("Keyup: ", event.key)
 				if event.key == K_LEFT:
 					self.deltaX = 0
@@ -93,7 +95,10 @@ class HMGame:
 					self.deltaY = 0
 				if event.key == K_DOWN:
 					self.deltaY = 0
-			# This will be ran every update. May produce problems, but I don't think so.
+			#End KEYUP
+		
+		#End for-loop (event.pull())
+		# This will be ran every update. May produce problems, but I don't think so.
 		self.player.keyMove(self.deltaX, self.deltaY)
 	# eventHandler() end
 

@@ -35,6 +35,7 @@ class Player(pygame.sprite.Sprite):
 		self.image, self.rect = loadimage("res/image/character.png")
 		screen = pygame.display.get_surface()
 		self.scrArea = screen.get_rect()
+		self.rect = self.rect.move(200,200)
 	#end __ init__
 
 	def draw(self, screen):
@@ -45,7 +46,6 @@ class Player(pygame.sprite.Sprite):
 		if DEBUG > 2:
 			print(pos)
 		newpos = self.rect.move((pos[0] - self.rect[0]), (pos[1] - self.rect[1]))
-
 		self.rect = newpos
 	# end mouseMove
 

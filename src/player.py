@@ -21,10 +21,21 @@
 #
 #
 
+import pygame
 from image import *
+
 
 class Player:
 	""" The player class, the one and only controlled character in the game.
 	"""
 	def __init__ (self):
 		print("in Player.__init__()")
+		self.sprite = loadimage("res/image/character.png", colorkey=None)
+		self.xPos = 0
+		self.yPos = 0
+	#end __ init__
+	
+	def draw(self, screen):
+		screen.blit(self.sprite, (self.xPos,self.yPos))
+		
+	#end

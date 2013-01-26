@@ -53,7 +53,7 @@ class HMGame:
 		#print("in displayUpdate")
 		self.screen.fill(self.background)
 		# Draw everything after drawing the background
-
+		self.player.draw(self.screen)
 		# Flip the display after drawing, so stuff shows up on screen
 		pygame.display.flip()
 	# displayUpdate() end

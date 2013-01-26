@@ -31,13 +31,17 @@ def main():
 	"""
 	print("Welcome to Heart Matters!")
 	width = 1024
-	height = 768
+	height = 750
 	size = width, height
 
 	# The screen is a pygame surface object.
 	screen = pygame.display.set_mode(size, pygame.RESIZABLE)
 	pygame.display.set_caption('Heart Matters')
 	hmgame = HMGame(screen)
+	
+	#for background music: ->
+	#backgroundSound = pygame.mixer.Sound("res/sound/Spooky Theme.ogg")
+	#backgroundSound.play(-1)
 
 	while 1:
 		hmgame.update()

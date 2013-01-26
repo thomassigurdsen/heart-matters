@@ -28,23 +28,23 @@ from hmglobals import DEBUG
 class SoundObject(pygame.sprite.Sprite):
 	""" Object class for sound-objects.
 	"""
-	def __init__ (self, sound):
+	def __init__ (self, sound, pos):
 		if DEBUG > 2:
 			print("in Object.__init__()")
 			print(soundPath)
 
 		soundPath = "res/sound/"+sound
 		pygame.sprite.Sprite.__init__(self)
-		self.rect = pygame.Rect(10,10) # This is the default size of a sound object on the map
+		self.rect = pygame.Rect(10,10,10,10) # This is the default size of a sound object on the map
 		self.sound = pygame.mixer.Sound(soundPath)
 		screen = pygame.display.get_surface()
 		self.scrArea = screen.get_rect()
-		self.rect = self.rect.move(400,300)
+		self.rect = self.rect.move(pos)
 		self.playSound()
 	#end __ init__
 
-	def playSound(self):
-		self.sound.play(-1)
+	def playSound(self, loop= (-1)):
+		self.sound.play(loop)
 	#play end
 
 	def stopSound(self):

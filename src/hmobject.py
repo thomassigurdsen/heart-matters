@@ -51,8 +51,8 @@ class hmObject(pygame.sprite.Sprite):
 		screen.blit(self.image, (self.rect[0], self.rect[1]))
 	#end draw
 
-	def playSound(self):
-		self.sound.play(-1)
+	def playSound(self, loop = (-1)):
+		self.sound.play(loop)
 	#play end
 
 	def stopSound(self):
@@ -62,7 +62,7 @@ class hmObject(pygame.sprite.Sprite):
 	def volumeControler(self,playerPos):		
 		difX = 0
 		difY = 0
-		volume= 0.0
+		volume = 0.0
 		
 		if playerPos[0] > self.rect[0]:
 			difX =  playerPos[0] - self.rect[0]
@@ -85,11 +85,11 @@ class hmObject(pygame.sprite.Sprite):
 			print(difpos)
 		
 		if difpos[0] > 200 or difpos[1] > 200:
-			self.sound.set_volume(0.0)
-		if difpos[0] < 200 and difpos[1] < 200:
 			self.sound.set_volume(0.2)
+		if difpos[0] < 200 and difpos[1] < 200:
+			self.sound.set_volume(0.4)
 		if difpos[0] < 100 and difpos[1] < 100:
-			self.sound.set_volume(0.5)
+			self.sound.set_volume(0.6)
 		if difpos[0] < 50 and difpos[1] < 50:
 			self.sound.set_volume(1)
 	#end volumControler

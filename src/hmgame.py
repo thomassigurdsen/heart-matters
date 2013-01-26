@@ -36,9 +36,12 @@ class HMGame:
 		self.player = Player()
 		
 		self.interactive = pygame.sprite.Group()
-		self.heartBeat = hmObject("character.png","Cardiac_Arrest(Sampler).ogg", (400,500))
+		self.wheel = hmObject("character.png","creakywheel.ogg", (924,200))
+		self.heartBeat = SoundObject("heartbeat.ogg", (400,500))
 				
 		self.interactive.add(self.heartBeat)
+		self.interactive.add(self.wheel)
+		
 		
 		#self.heartBeat()
 		self.deltaX = 0
@@ -140,7 +143,7 @@ class HMGame:
 		self.gardenWallShort0.draw(self.screen)
 		self.gardenWallShort1.draw(self.screen)
 		self.player.draw(self.screen)
-		self.heartBeat.draw(self.screen)
+		self.wheel.draw(self.screen)
 		# Flip the display after drawing, so stuff shows up on screen
 		pygame.display.flip()
 	# displayUpdate() end

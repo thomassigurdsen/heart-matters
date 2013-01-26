@@ -49,34 +49,40 @@ class SoundObject(pygame.sprite.Sprite):
 
 	def stopSound(self):
 		self.sound.stop()
-	#play end
+	#stop end
 
-	def volumeControler(self,playerPos):
+	def volumeControler(self,playerPos):		
 		difX = 0
 		difY = 0
-
-		difX = playerPos[0] - self.rect[0]
-		difY = playerPos[1] - self.rect[1]
-
+		volume= 0.0
+		
+		if playerPos[0] > self.rect[0]:
+			difX =  playerPos[0] - self.rect[0]
+		else:
+			difX =  self.rect[0] - playerPos[0]
+			
+		if playerPos[1] > self.rect[1]:
+			difY =  playerPos[1] - self.rect[1]
+		else:
+			difY =  self.rect[1] - playerPos[1]
+			
+		
+		#difX =  playerPos[0] - self.rect[0]
+		#difY =  playerPos[1] - self.rect[1]
+		
 		difpos = pygame.math.Vector2(difX,difY)
-		#difpos = playerPos - self.rect
-		#vectorLengt = difpos.length()
-		#if DEBUG > 2:
-			#print (difpos.length())
 
-		if difpos.length() > 0.0:
-			newVolume = difpos.normalize()
-			if newVolume[0] > newVolume[1]:
-				self.sound.set_volume(newVolume[0]/2)
-				#print ("x: ")
-				if DEBUG > 1:
-					print(newVolume[0])
-			else:
-				self.sound.set_volume(newVolume[1]/2)
-				#print ("y: ")
-				if DEBUG > 1:
-					print(newVolume[1])
 
-			#self.sound.set_volume(newVolume/100)
-			#print (newVolume/100)
+		if DEBUG > 2:
+			print(difpos)
+		
+		if difpos[0] > 200 or difpos[1] > 200:
+			self.sound.set_volume(0.0)
+		if difpos[0] < 200 and difpos[1] < 200:
+			self.sound.set_volume(0.2)
+		if difpos[0] < 100 and difpos[1] < 100:
+			self.sound.set_volume(0.5)
+		if difpos[0] < 50 and difpos[1] < 50:
+			self.sound.set_volume(1)
 	#end volumControler
+#end soundObject

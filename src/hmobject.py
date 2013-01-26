@@ -66,14 +66,11 @@ class Object(pygame.sprite.Sprite):
 		
 		if playerPos[0] > self.rect[0]:
 			difX =  playerPos[0] - self.rect[0]
-			#print(difX)
 		else:
 			difX =  self.rect[0] - playerPos[0]
-			#print(difX)
-		
+			
 		if playerPos[1] > self.rect[1]:
 			difY =  playerPos[1] - self.rect[1]
-			
 		else:
 			difY =  self.rect[1] - playerPos[1]
 			
@@ -84,8 +81,9 @@ class Object(pygame.sprite.Sprite):
 		difpos = pygame.math.Vector2(difX,difY)
 
 
-
-		print(difpos)
+		if DEBUG > 2:
+			print(difpos)
+		
 		if difpos[0] > 200 or difpos[1] > 200:
 			self.sound.set_volume(0.0)
 		if difpos[0] < 200 and difpos[1] < 200:
@@ -94,8 +92,5 @@ class Object(pygame.sprite.Sprite):
 			self.sound.set_volume(0.5)
 		if difpos[0] < 50 and difpos[1] < 50:
 			self.sound.set_volume(1)
-		
-			#self.sound.set_volume(newVolume/100)
-			#print (newVolume/100)
 	#end volumControler
-
+#end hmObject

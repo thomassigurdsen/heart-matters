@@ -34,9 +34,11 @@ class HMGame:
 		self.screen = screen
 		self.background = 0,120,100
 		self.player = Player()
+		
+		self.pushable = pygame.sprite.Group
 
 		self.heartBeat = Object("character.png","Cardiac_Arrest(Sampler).ogg")
-		self.playerSpeed = 2
+		self.playerSpeed = 0.5
 		self.deltaX = 0
 		self.deltaY = 0
 
@@ -93,6 +95,9 @@ class HMGame:
 					self.deltaY += self.playerSpeed
 				if event.key == K_r:
 					self.player.resetPosition()
+				if event.key == K_SPACE:
+					PushSprites = pygame.sprite.spritecollide(self.palyer,self.pushable,0)
+					
 			#end KEYDOWN
 
 			if event.type == KEYUP:

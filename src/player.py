@@ -43,9 +43,9 @@ class Player(pygame.sprite.Sprite):
 
 	def mouseMove(self, pos):
 		if DEBUG > 0:
-			#print(pos)
+			print(pos)
 		newpos = self.rect.move((pos[0] - self.rect[0]), (pos[1] - self.rect[1]))
-		print(newpos)
+		
 		self.rect = newpos
 	# end mouseMove
 
@@ -54,7 +54,7 @@ class Player(pygame.sprite.Sprite):
 			print("in player.keymove")
 		if DEBUG > 0:
 			print("dx, dy: ", deltaX, deltaY)
-		newpos = self.rect.move((deltaX + self.rect[0]), (deltaY + self.rect[1]))
+		newpos = self.rect.move((deltaX), (deltaY))
 		self.rect = newpos
 	# end keyMove
 

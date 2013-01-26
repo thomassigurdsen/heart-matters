@@ -33,7 +33,7 @@ class HMGame:
 		self.background = 0,120,100
 		self.player = Player()
 		#self.testObject = Object("Mars1.png","test.ogg")
-		self.playerSpeed = 2
+		self.playerSpeed = 5
 	# __init__() end
 
 	def update(self):
@@ -44,7 +44,8 @@ class HMGame:
 	def eventHandler(self):
 		if DEBUG > 2:
 			print("in eventHadler")
-		for event in pygame.event.get():
+		event = pygame.event.poll()
+		if 1:
 			deltaX = 0
 			deltaY = 0
 			if event.type == QUIT:
@@ -88,7 +89,11 @@ class HMGame:
 				if event.key == K_DOWN:
 					deltaY = 0
 			# This will be ran every update. May produce problems, but I don't think so.
-			self.player.keyMove(deltaX, deltaY)
+			
+			if event:
+				self.player.keyMove(deltaX, deltaY)
+			deltaX = 0
+			deltaY = 0
 	# eventHandler() end
 
 	def displayUpdate(self):

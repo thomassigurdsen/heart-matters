@@ -36,6 +36,7 @@ class HMGame:
 		self.playerSpeed = 5
 		self.boundingBox = self.screen.get_rect()
 		self.boundingBox.clamp(self.player.rect)
+		print(self.boundingBox.contains(self.player.rect))
 	# __init__() end
 
 	def update(self):

@@ -25,7 +25,7 @@ import pygame
 from image import *
 from hmglobals import DEBUG
 
-class Object:
+class Object(pygame.sprite.Sprite):
 	""" Object class for unspecified game world object handling.
 	"""
 	def __init__ (self, image, sound):
@@ -47,11 +47,11 @@ class Object:
 	def draw(self, screen):
 		screen.blit(self.image, (self.rect[0], self.rect[1]))
 	#end draw
-	
+
 	def playSound(self):
 		self.sound.play(-1)
 	#play end
-	
+
 	def stopSound(self):
 		self.sound.stop()
 	#play end

@@ -37,5 +37,10 @@ class Player:
 
 	def draw(self, screen):
 		screen.blit(self.sprite[0], (self.xPos,self.yPos))
+		# self.sprite[0] is the way to access element 0 of the tuple self.sprite
+	#end draw
 
-	#end
+	def mouseMove(self, button, pos):
+		if DEBUG > 0:
+			print(button, pos)
+	# end move

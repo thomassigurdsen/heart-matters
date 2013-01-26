@@ -27,16 +27,24 @@ pygame.init()
 
 import pygame, os
 
+### The DEBUG flag, change it to change level of debug info:
+## 0: No debug info[1]
+## 1: First level of debug messages, should only print information
+## relevant to what is being worked on.
+## 2: Second level debug, this is where almost all messages live.
+## 3: Third level debug, this is for verbose or frequently repeated
+## debug messages.
+##
+## [1]: This will not be true until the debug flag has been implemented
+## project wide.
+
+DEBUG = 1
+
 class HMGame:
 	def __init__(self, screen):
 		self.screen = screen
-
-		#characterFile = os.path.join("res/image","character.png")
-		#character = pygame.image.load(characterFile)
-
 		self.background = 0,120,100
 		self.player = Player()
-
 	# __init__() end
 
 	def update(self):
@@ -45,14 +53,20 @@ class HMGame:
 	# update() end
 
 	def eventHandler(self):
-		#print("in eventHadler")
+		if DEBUG > 2:
+			print("in eventHadler")
 		for event in pygame.event.get():
 			if event.type == QUIT:
 				sys.exit(0)
 			if event.type == KEYDOWN:
 				if event.key == K_ESCAPE:
 					sys.exit(0)
-#				if event.type ==
+			if event.type == MOUSEBUTTONDOWN:
+				if DEBUG > 1:
+					print(pygame.event.event_name(event.type))
+					print(event.pos)
+					print(event.button)
+				self.player.mouseMove(event.button, event.pos)
 #			if event.key == K_LEFT:
 #			if event.key == K_RIGHT:
 #			if event.key == K_UP:
@@ -61,9 +75,8 @@ class HMGame:
 	# eventHandler() end
 
 	def displayUpdate(self):
-		#self.screen.blit(character)
-		print("in displayUpdate")
-		#print("in displayUpdate")
+		if DEBUG > 2:
+			print("in displayUpdate")
 		self.screen.fill(self.background)
 		# Draw everything after drawing the background
 		self.player.draw(self.screen)

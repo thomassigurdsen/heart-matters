@@ -35,9 +35,9 @@ class Player(pygame.sprite.Sprite):
 		self.startxpos = 200
 		self.startypos = 200
 		pygame.sprite.Sprite.__init__(self)
-		#self.image, self.rect = loadimage("res/image/playerAnimation.png", (255,0,255))
-		self.ss = spritesheet("playerAnimation.png")
-		self.image = self.ss.image_at((0,0,40,40))
+		self.image, self.rect = loadimage("res/image/playerAnimation.png", (255,0,255))
+#		self.ss = spritesheet("playerAnimation.png")
+#		self.image = self.ss.image_at((0,0,40,40))
 		screen = pygame.display.get_surface()
 		self.scrArea = screen.get_rect()
 		self.rect = self.rect.move(self.startxpos, self.startypos)

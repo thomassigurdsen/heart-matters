@@ -4,9 +4,9 @@
 #
 #  Copyright 2013 Thomas Sigurdsen <thomas.sigurdsen@gmail.com>
 #
-#  This game and all content in this file is licensed under the 
+#  This game and all content in this file is licensed under the
 #  Attribution-Noncommercial-Share Alike 3.0 version of the Creative Commons License.
-#  For reference the license is given below and can also be found at 
+#  For reference the license is given below and can also be found at
 #  http://creativecommons.org/licenses/by-nc-sa/3.0/
 #
 #  This program is distributed in the hope that it will be useful,
@@ -30,4 +30,4 @@
 ## [1]: This will not be true until the debug flag has been implemented
 ## project wide.
 
-DEBUG = 2
+DEBUG = 0

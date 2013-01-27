@@ -4,9 +4,9 @@
 #
 #  Copyright 2013 Thomas Sigurdsen <thomas.sigurdsen@gmail.com>
 #
-#  This game and all content in this file is licensed under the 
+#  This game and all content in this file is licensed under the
 #  Attribution-Noncommercial-Share Alike 3.0 version of the Creative Commons License.
-#  For reference the license is given below and can also be found at 
+#  For reference the license is given below and can also be found at
 #  http://creativecommons.org/licenses/by-nc-sa/3.0/
 #
 #  This program is distributed in the hope that it will be useful,
@@ -29,14 +29,14 @@ class Player(pygame.sprite.Sprite):
 		self.startxpos = 200
 		self.startypos = 200
 		pygame.sprite.Sprite.__init__(self)
-		self.image, self.rect = loadimage("res/image/player.png", (255,0,255))
+		self.image, self.rect = loadimage("res/image/Player.png", (255,0,255))
 		#self.ss = spritesheet("playerAnimation.png", (255,0,255))
 		#self.image = self.ss.image_at((0,0,40,40))
 		screen = pygame.display.get_surface()
 		self.scrArea = screen.get_rect()
 
-		
-		
+
+
 		## Sprite Animation!
 #		self.FPS = 120
 #		frames = self.FPS/12
@@ -53,8 +53,8 @@ class Player(pygame.sprite.Sprite):
 #		self.image = self.strips[self.spritenum].next()
 
 		self.rect = self.image.get_rect().move(self.startxpos, self.startypos)
-		
-		
+
+
 	#end __ init__
 
 	def draw(self, screen):

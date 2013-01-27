@@ -32,17 +32,19 @@ pygame.init()
 
 
 def titleScreen(screen):
-		self.screen = screen
-		self.background = 0,0,0
+		screen = screen
+		background = 0,0,0
 		playMenu = True
 		
-		self.titleScreen = hmObject("ADD BACkGROUND IMAGE HERE","ADD SOUND HERE", (0,0), (255,0,255))
+		titleScreen = hmObject("ADD BACkGROUND IMAGE HERE","ADD SOUND HERE", (0,0), (255,0,255))
 		
 		while playMneu:
-			titleScreen.draw(self.screen)
+			screen.fill(background)
+			titleScreen.draw(screen)
 			pygame.display.flip()
 			
 			for event in pygame.event.get():
 				if event.key == K_SPACE:
 					playMenu = False
+					titleScreen.stopSound()
 		

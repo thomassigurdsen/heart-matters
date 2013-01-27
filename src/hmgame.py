@@ -178,12 +178,16 @@ class HMGame:
 					print("Keyup: ", event.key)
 				if event.key == K_LEFT:
 					self.deltaX = 0
+					#pygame.transform.rotate(self.player.image, 0):
 				if event.key == K_RIGHT:
 					self.deltaX = 0
+					#pygame.transform.rotate(self.player.image, 180):
 				if event.key == K_UP:
 					self.deltaY = 0
+					#pygame.transform.rotate(self.player.image, 270):
 				if event.key == K_DOWN:
 					self.deltaY = 0
+					#pygame.transform.rotate(self.player.image, 90):
 			#End KEYUP
 		#End for-loop (event.pull())
 		# This will be ran every update. May produce problems, but I don't think so.
@@ -197,6 +201,7 @@ class HMGame:
 		# Draw everything after drawing the background
 		if self.heartfound == True:
 			self.heart.draw(self.screen)
+		self.player.draw(self.screen)
 		self.gardenWallLong0.draw(self.screen)
 		self.gardenWallLong1.draw(self.screen)
 		self.gardenWallShort0.draw(self.screen)

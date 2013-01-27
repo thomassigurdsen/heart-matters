@@ -51,8 +51,7 @@ def main():
 
 	while 1:
 		hmgame.update()
-		
-		if clock.get_ticks > 30000:
+		if clock.tick() > 30000:
 			hmgame.QUIT()
 			titleScreen(screen,"barrel.png", "Cardiac_Arrest(Sampler).ogg")
 			hmgame = HMGame(screen)

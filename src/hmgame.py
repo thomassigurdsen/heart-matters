@@ -5,9 +5,9 @@
 #  Copyright 2013 Thomas Sigurdsen <thomas.sigurdsen@gmail.com>
 #  Copyright 2013 Harry Nystad <harryjnystad@gmail.com>
 #
-#  This game and all content in this file is licensed under the 
+#  This game and all content in this file is licensed under the
 #  Attribution-Noncommercial-Share Alike 3.0 version of the Creative Commons License.
-#  For reference the license is given below and can also be found at 
+#  For reference the license is given below and can also be found at
 #  http://creativecommons.org/licenses/by-nc-sa/3.0/
 #
 #  This program is distributed in the hope that it will be useful,
@@ -28,7 +28,10 @@ pygame.init()
 class HMGame:
 	def __init__(self, screen):
 		self.screen = screen
-		self.background = 0,120,100
+		#self.background = 0,120,100
+		self.background = ImageObject("Courtyard.png", (0,0))
+
+		#pygame.transform.scale(self.srf, (1024,768))
 		self.player = Player()
 
 		self.interactive = pygame.sprite.Group()
@@ -197,7 +200,8 @@ class HMGame:
 	def displayUpdate(self):
 		if DEBUG > 2:
 			print("in displayUpdate")
-		self.screen.fill(self.background)
+		#self.screen.fill(self.background)
+		self.background.draw(self.screen)
 		# Draw everything after drawing the background
 		if self.heartfound == True:
 			self.heart.draw(self.screen)

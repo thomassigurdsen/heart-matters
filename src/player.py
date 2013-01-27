@@ -56,6 +56,8 @@ class Player(pygame.sprite.Sprite):
 	def draw(self, screen):
 		#screen.blit(self.image, (self.rect[0], self.rect[1]))
 		screen.blit(self.image, (self.rect[0], self.rect[1]))
+		if DEBUG > 0:
+			print(self.rect[0], self.rect[1])
 	#end draw
 
 	def mouseMove(self, pos):

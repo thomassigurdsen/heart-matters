@@ -38,7 +38,7 @@ def main():
 	screen = pygame.display.set_mode(size, pygame.RESIZABLE)
 	pygame.display.set_caption('Heart Matters')
 	hmgame = HMGame(screen)
-	
+
 	#for background music: ->
 	#backgroundSound = pygame.mixer.Sound("res/sound/Spooky Theme.ogg")
 	#backgroundSound.play(-1)

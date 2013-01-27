@@ -37,12 +37,12 @@ class HMGame:
 		self.player = Player()
 
 		self.interactive = pygame.sprite.Group()
-		self.wheel = hmObject("character.png","creakywheel.ogg", (924,200))
+		self.wheel = hmObject("wheelbarrow.1.png","creakywheel.ogg", (924,200), (255,0,255))
 		self.heartBeat = SoundObject("heartbeat.ogg", (400,500))
 
 		self.interactive.add(self.heartBeat)
 		self.interactive.add(self.wheel)
-		
+
 
 		#self.heartBeat()
 		self.deltaX = 0
@@ -94,15 +94,15 @@ class HMGame:
 				sys.exit(0)
 # Mouse input
 			if event.type == MOUSEBUTTONDOWN:
-				if DEBUG > 1:
+				if DEBUG > 2:
 					print(pygame.event.event_name(event.type))
 					print(event.button, event.pos)
 				# Mouse buttons are:
 				# 1 = Left
 				# 2 = Middle
 				# 3 = Right
-				if event.button == 1:
-					self.player.mouseMove(event.pos)
+#				if event.button == 1:
+#					self.player.mouseMove(event.pos)
 # Keyboard input
 			if event.type == KEYDOWN:
 				if DEBUG > 2:

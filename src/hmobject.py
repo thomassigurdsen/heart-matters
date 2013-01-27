@@ -30,7 +30,7 @@ class hmObject(pygame.sprite.Sprite):
 	This could just inherit more or less everything from soundobject and imageobject.
 	We don't do that, because of time and familiarity.
 	"""
-	def __init__ (self, image, sound, pos):
+	def __init__ (self, image, sound, pos, colorkey=None):
 		if DEBUG > 2:
 			print("in Object.__init__()")
 			print(imagePath)
@@ -39,7 +39,7 @@ class hmObject(pygame.sprite.Sprite):
 		imagePath = "res/image/"+image
 		soundPath = "res/sound/"+sound
 		pygame.sprite.Sprite.__init__(self)
-		self.image, self.rect = loadimage(imagePath)
+		self.image, self.rect = loadimage(imagePath, colorkey)
 		self.sound = pygame.mixer.Sound(soundPath)
 		screen = pygame.display.get_surface()
 		self.scrArea = screen.get_rect()
@@ -59,31 +59,31 @@ class hmObject(pygame.sprite.Sprite):
 		self.sound.stop()
 	#play end
 
-	def volumeControler(self,playerPos):		
+	def volumeControler(self,playerPos):
 		difX = 0
 		difY = 0
 		volume = 0.0
-		
+
 		if playerPos[0] > self.rect[0]:
 			difX =  playerPos[0] - self.rect[0]
 		else:
 			difX =  self.rect[0] - playerPos[0]
-			
+
 		if playerPos[1] > self.rect[1]:
 			difY =  playerPos[1] - self.rect[1]
 		else:
 			difY =  self.rect[1] - playerPos[1]
-			
-		
+
+
 		#difX =  playerPos[0] - self.rect[0]
 		#difY =  playerPos[1] - self.rect[1]
-		
+
 		difpos = pygame.math.Vector2(difX,difY)
 
 
 		if DEBUG > 2:
 			print(difpos)
-		
+
 		if difpos[0] > 200 or difpos[1] > 200:
 			self.sound.set_volume(0.2)
 		if difpos[0] < 200 and difpos[1] < 200:

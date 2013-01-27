@@ -22,20 +22,21 @@
 #
 import pygame
 from pygame.locals import RLEACCEL
+from hmglobals import DEBUG
 
 def loadimage(path, colorkey=None):
-    """Path is the full relative path to the image file being used,
-    colorkey is the colorkey to be used, if any."""
-    try:
-        image = pygame.image.load(path)
-    except pygame.error as message:
-        print('Cannot load image:', path)
-        print("COULD NOT LOAD IMAGE!")
-        #raise(SystemExit, message)
-    image = image.convert()
-    if colorkey is not None:
-        if colorkey is -1:
-            colorkey = image.get_at((0,0))
-        image.set_colorkey(colorkey, RLEACCEL)
-        print(image.get_colorkey())
-    return image, image.get_rect()
+	"""Path is the full relative path to the image file being used,
+	colorkey is the colorkey to be used, if any."""
+	try:
+		image = pygame.image.load(path)
+	except pygame.error as message:
+		print('Cannot load image:', path)
+		raise(message)
+	image = image.convert()
+	if colorkey is not None:
+		if colorkey is -1:
+			colorkey = image.get_at((0,0))
+		image.set_colorkey(colorkey, RLEACCEL)
+		if DEBUG > 1:
+			print(image.get_colorkey())
+	return image, image.get_rect()

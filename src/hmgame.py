@@ -138,7 +138,8 @@ class HMGame:
 						interactive.stopSound()
 					if self.player.rect.colliderect(self.heartbeat.rect):
 						self.heartfound = True
-						print ("heart found")
+						if DEBUG > 1:
+							print ("heart found")
 
 			#end KEYDOWN
 
@@ -166,7 +167,6 @@ class HMGame:
 		# Draw everything after drawing the background
 		if self.heartfound == True:
 			self.heart.draw(self.screen)
-
 		self.gardenWallLong0.draw(self.screen)
 		self.gardenWallLong1.draw(self.screen)
 		self.gardenWallShort0.draw(self.screen)

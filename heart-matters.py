@@ -24,6 +24,7 @@
 import sys, pygame, os
 sys.path.append('./src/')
 from hmgame import *
+from titleScreen import *
 pygame.init()
 
 def main():

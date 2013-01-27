@@ -67,8 +67,8 @@ class SoundObject(pygame.sprite.Sprite):
 			difY =  self.rect[1] - playerPos[1]
 			
 		
-		#difX =  playerPos[0] - self.rect[0]
-		#difY =  playerPos[1] - self.rect[1]
+		difX =  playerPos[0] - self.rect[0]
+		difY =  playerPos[1] - self.rect[1]
 		
 		difpos = pygame.math.Vector2(difX,difY)
 

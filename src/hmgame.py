@@ -51,13 +51,13 @@ class HMGame:
 
 		## Make heart sound object
 		self.heartbeat = SoundObject("heartbeat.ogg", (145, 400))
-		
+
 		# Heart found bool statement
 		self.heartfound = False
-		
+
 		## Make heart object !!!Debugging only!!
-		self.heart = ImageObject("heart.png", (145, 400))
-		
+		self.heart = ImageObject("heart.png", (145, 400), (255,0,255))
+
 		## Make wall bounding-box.
 		self.gardenWallLong0 = ImageObject("gardenWallLong.png", (0, 0))
 		self.gardenWallLong1 = ImageObject("gardenWallLong.png", (0, (self.screen.get_size()[1] - 10)))
@@ -138,7 +138,7 @@ class HMGame:
 					if self.player.rect.colliderect(self.heartbeat.rect):
 						self.heartfound = True
 						print ("heart found")
-							
+
 			#end KEYDOWN
 
 			if event.type == KEYUP:
@@ -165,7 +165,7 @@ class HMGame:
 		# Draw everything after drawing the background
 		if self.heartfound == True:
 			self.heart.draw(self.screen)
-		
+
 		self.gardenWallLong0.draw(self.screen)
 		self.gardenWallLong1.draw(self.screen)
 		self.gardenWallShort0.draw(self.screen)

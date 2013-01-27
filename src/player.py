@@ -73,10 +73,11 @@ class Player(pygame.sprite.Sprite):
 	# end mouseMove
 
 	def keyMove(self, deltaX, deltaY):
-		if DEBUG > 2:
+		if DEBUG > 3:
 			print("in player.keymove")
 		if DEBUG > 2:
 			print("dx, dy: ", deltaX, deltaY)
+			print("x, y: ", self.startxpos, self.startypos)
 
 		self.spritenum += 1
 		if self.spritenum >= len(self.strips):

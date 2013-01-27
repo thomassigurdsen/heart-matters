@@ -38,7 +38,7 @@ class HMGame:
 
 		self.interactive = pygame.sprite.Group()
 		self.wheel = hmObject("wheelbarrow.1.png","creakywheel.ogg", (924,200), (255,0,255))
-		self.dog = hmObject ("charcater.png","creakywheel.ogg", (30,800), (255,0,255))
+		self.dog = hmObject ("character.png","creakywheel.ogg", (30,800), (255,0,255))
 		self.heartBeat = SoundObject("heartbeat.ogg", (400,500))
 
 		self.interactive.add(self.heartBeat)
@@ -70,6 +70,41 @@ class HMGame:
 		self.tree = ImageObject("tree.png", ((self.screen.get_size()[0] - 160), 100), (255,0,255))
 		self.collidingObjectsGroup = pygame.sprite.RenderUpdates((self.tree))
 	# __init__() end
+
+		#####
+#surface = pygame.display.set_mode((100,100))
+#FPS = 120
+#frames = FPS / 12
+#strips = [
+#    SpriteStripAnim('Explode1.bmp', (0,0,24,24), 8, 1, True, frames),
+#    SpriteStripAnim('Explode2.bmp', (0,0,12,12), 7, 1, True, frames),
+#    SpriteStripAnim('Explode3.bmp', (0,0,48,48), 4, 1, True, frames) +
+#    SpriteStripAnim('Explode3.bmp', (48,48,48,48), 4, 1, True, frames),
+#    SpriteStripAnim('Explode4.bmp', (0,0,24,24), 6, 1, True, frames),
+#    SpriteStripAnim('Explode5.bmp', (0,0,48,48), 4, 1, True, frames) +
+#    SpriteStripAnim('Explode5.bmp', (48,48,48,48), 4, 1, True, frames),
+#]
+#black = Color('black')
+#clock = pygame.time.Clock()
+#n = 0
+#strips[n].iter()
+#image = strips[n].next()
+#while True:
+#    for e in pygame.event.get():
+#        if e.type == KEYUP:
+#            if e.key == K_ESCAPE:
+#                sys.exit()
+#            elif e.key == K_RETURN:
+#                n += 1
+#                if n >= len(strips):
+#                    n = 0
+#                strips[n].iter()
+#    surface.fill(black)
+#    surface.blit(image, (0,0))
+#    pygame.display.flip()
+#    image = strips[n].next()
+#    clock.tick(FPS)
+#####
 
 	def update(self):
 		self.eventHandler()
@@ -172,9 +207,9 @@ class HMGame:
 		self.gardenWallShort0.draw(self.screen)
 		self.gardenWallShort1.draw(self.screen)
 		self.tree.draw(self.screen)
-		self.player.draw(self.screen)
 		self.wheel.draw(self.screen)
 		self.dog.draw(self.screen)
+		self.player.draw(self.screen)
 		# Flip the display after drawing, so stuff shows up on screen
 		pygame.display.flip()
 	# displayUpdate() end

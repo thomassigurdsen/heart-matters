@@ -36,6 +36,7 @@ def main():
 	height = 768
 	size = width, height
 	gameOver = False
+	clock = pygame.time.Clock()
 
 	# The screen is a pygame surface object.
 	screen = pygame.display.set_mode(size, pygame.RESIZABLE)
@@ -49,7 +50,8 @@ def main():
 
 	while 1:
 		hmgame.update()
-		if gameOver:
+		
+		if clock.get_ticks > 30000:
 			hmgame.QUIT()
 			titleScreen(screen,"barrel.png", "Cardiac_Arrest(Sampler).ogg")
 			hmgame = HMGame(screen)

@@ -41,7 +41,8 @@ def main():
 	# The screen is a pygame surface object.
 	screen = pygame.display.set_mode(size, pygame.RESIZABLE)
 	pygame.display.set_caption('Heart Matters')
-	titleScreen(screen,"barrel.png", "heartbeat.ogg") # <- starts Title screen
+	titleScreen(screen,"thtmInfoScreen1.png", "heartbeat.ogg") # <- starts Title screen
+	titleScreen(screen,"thtmInfoScreen2.png", "heartbeat.ogg") # <- starts Title screen
 	hmgame = HMGame(screen) # <- init game
 
 	#for background music: ->
@@ -55,7 +56,7 @@ def main():
 			hmgame.QUIT()
 			titleScreen(screen,"barrel.png", "Cardiac_Arrest(Sampler).ogg")
 			hmgame = HMGame(screen)
-		
+
 # Main end
 
 

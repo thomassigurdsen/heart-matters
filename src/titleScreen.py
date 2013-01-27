@@ -36,8 +36,11 @@ def titleScreen(screen):
 		background = 0,0,0
 		playMenu = True
 		
+		#adds a object with image and sound 
 		titleScreen = hmObject("ADD BACkGROUND IMAGE HERE","ADD SOUND HERE", (0,0), (255,0,255))
 		
+		
+		#Runs the title screen as long as the player dose not push the spacebar
 		while playMneu:
 			screen.fill(background)
 			titleScreen.draw(screen)

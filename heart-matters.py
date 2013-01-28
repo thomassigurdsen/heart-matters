@@ -44,10 +44,13 @@ def main():
 	#backgroundSound = pygame.mixer.Sound("res/sound/Spooky Theme.ogg")
 	#backgroundSound.play(-1)
 
-	while 1:
+	running = True
+	while running:
 		hmgame.update()
-		if clock.tick() > 30000:
-			hmgame.QUIT()
+		if DEBUG > 1:
+			print(clock.get_ticks())
+		if clock.tick() > 300000:
+			running = False
 			titleScreen(screen,"thtmULostScreen.png", "Cardiac_Arrest(Sampler).ogg")
 			titleScreen(screen,"thtmCredits1.png", "Cardiac_Arrest(Sampler).ogg")
 			titleScreen(screen,"thtmCredits2.png", "Cardiac_Arrest(Sampler).ogg")

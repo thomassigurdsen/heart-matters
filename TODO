@@ -1,5 +1,19 @@
 heart-matters programmers TODO list:
 
-Fix endscreens
-Sound management
-
+Fix endscreens:
+	do these work at all?
+Sound management:
+	should be tweaked, doesn't work properly
+Random Animal/Heart placement:
+	add it.
+Obstacles and Puzzles:
+	replace the two drawn ones
+	add a couople more
+	fix arrows for tutorial
+Laboratory:
+	add it
+	fix transition, door?
+	add lightning closet
+	animation of animals?
+Player:
+	animate!

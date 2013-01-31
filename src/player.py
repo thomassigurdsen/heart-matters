@@ -38,12 +38,12 @@ class Player(pygame.sprite.Sprite):
 	def draw(self, screen):
 		#screen.blit(self.image, (self.rect[0], self.rect[1]))
 		screen.blit(self.image, (self.rect[0], self.rect[1]))
-		if DEBUG > 0:
+		if DEBUG > 2:
 			print(self.rect[0], self.rect[1])
 	#end draw
 
 	def mouseMove(self, pos):
-		if DEBUG > 2:
+		if DEBUG > 3:
 			print("mouseposition: ", pos)
 		print("Mousemovement should not be used!")
 		newpos = self.rect.move((pos[0] - self.rect[0]), (pos[1] - self.rect[1]))
@@ -56,12 +56,6 @@ class Player(pygame.sprite.Sprite):
 		if DEBUG > 3:
 			print("dx, dy: ", deltaX, deltaY)
 			print("x, y: ", self.startxpos, self.startypos)
-
-#		self.spritenum += 1
-#		if self.spritenum >= len(self.strips):
-#			self.spritenum = 0
-#		self.strips[self.spritenum].iter()
-
 		newpos = self.rect.move((deltaX), (deltaY))
 		self.rect = newpos
 	# end keyMove

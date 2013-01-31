@@ -22,6 +22,7 @@ from player import *
 from hmobject import *
 from imageobject import *
 from soundobject import *
+from hminvisiblesprite import *
 from hmglobals import DEBUG
 pygame.init()
 
@@ -58,56 +59,24 @@ class HMGame:
 		self.heart = ImageObject("heart.png", (145, 400), (255,0,255))
 
 		## Make wall bounding-box.
-		self.gardenWallLong0 = ImageObject("gardenWallLong.png", (0, 0))
-		self.gardenWallLong1 = ImageObject("gardenWallLong.png", (0, (self.screen.get_size()[1] - 10)))
-		self.gardenWallShort0 = ImageObject("gardenWallShort.png", (0, 0))
-		self.gardenWallShort1 = ImageObject("gardenWallShort.png", ((self.screen.get_size()[0] - 10), 0))
-		self.boundingBoxGroup = pygame.sprite.RenderUpdates((self.gardenWallLong0, self.gardenWallLong1, self.gardenWallShort0, self.gardenWallShort1))
+		longwallsize = 30
+		leftwallsize = 40
+		rightwallsize = 120
+		self.topWall = HMInvisibleSprite(0,0, self.screen.get_width(), longwallsize)
+		self.bottomWall = HMInvisibleSprite(0,self.screen.get_height() - longwallsize, self.screen.get_width(), longwallsize)
+		self.leftwall = HMInvisibleSprite(0,longwallsize, leftwallsize,self.screen.get_height() - (longwallsize*2))
+		self.rightwall = HMInvisibleSprite(self.screen.get_width() - rightwallsize,longwallsize, rightwallsize,screen.get_width() - (longwallsize*2))
+		self.wallgroup = pygame.sprite.Group((self.topWall, self.bottomWall, self.leftwall, self.rightwall))
 
 		## Make trees.
 		self.tree = ImageObject("tree.png", ((self.screen.get_size()[0] - 160), 100), (255,0,255))
 		self.collidingObjectsGroup = pygame.sprite.RenderUpdates((self.tree))
 	# __init__() end
 
-		#####
-#surface = pygame.display.set_mode((100,100))
-#FPS = 120
-#frames = FPS / 12
-#strips = [
-#    SpriteStripAnim('Explode1.bmp', (0,0,24,24), 8, 1, True, frames),
-#    SpriteStripAnim('Explode2.bmp', (0,0,12,12), 7, 1, True, frames),
-#    SpriteStripAnim('Explode3.bmp', (0,0,48,48), 4, 1, True, frames) +
-#    SpriteStripAnim('Explode3.bmp', (48,48,48,48), 4, 1, True, frames),
-#    SpriteStripAnim('Explode4.bmp', (0,0,24,24), 6, 1, True, frames),
-#    SpriteStripAnim('Explode5.bmp', (0,0,48,48), 4, 1, True, frames) +
-#    SpriteStripAnim('Explode5.bmp', (48,48,48,48), 4, 1, True, frames),
-#]
-#black = Color('black')
-#clock = pygame.time.Clock()
-#n = 0
-#strips[n].iter()
-#image = strips[n].next()
-#while True:
-#    for e in pygame.event.get():
-#        if e.type == KEYUP:
-#            if e.key == K_ESCAPE:
-#                sys.exit()
-#            elif e.key == K_RETURN:
-#                n += 1
-#                if n >= len(strips):
-#                    n = 0
-#                strips[n].iter()
-#    surface.fill(black)
-#    surface.blit(image, (0,0))
-#    pygame.display.flip()
-#    image = strips[n].next()
-#    clock.tick(FPS)
-#####
-
 	def update(self):
 		self.eventHandler()
-		# check for collisions with boundingBoxGroup
-		for wall in pygame.sprite.spritecollide(self.player, self.boundingBoxGroup, False):
+		# check for collisions with wallgroup #boundingBoxGroup
+		for wall in pygame.sprite.spritecollide(self.player, self.wallgroup, False):
 			if DEBUG > 1:
 				print("COLLISION: WALL")
 			self.player.keyMove(-self.deltaX, -self.deltaY)
@@ -127,10 +96,8 @@ class HMGame:
 	def eventHandler(self):
 		deltaX = 0
 		deltaY = 0
-		if DEBUG > 2:
+		if DEBUG > 3:
 			print("in eventHadler")
-		#event = pygame.event.get()
-
 		for event in pygame.event.get():
 
 			if event.type == QUIT:
@@ -173,9 +140,7 @@ class HMGame:
 						self.heartfound = True
 						if DEBUG > 1:
 							print ("heart found")
-
-			#end KEYDOWN
-
+#end KEYDOWN
 			if event.type == KEYUP:
 				if DEBUG > 1:
 					print("Keyup: ", event.key)
@@ -206,14 +171,12 @@ class HMGame:
 		if self.heartfound == True:
 			self.heart.draw(self.screen)
 		self.player.draw(self.screen)
-		self.gardenWallLong0.draw(self.screen)
-		self.gardenWallLong1.draw(self.screen)
-		self.gardenWallShort0.draw(self.screen)
-		self.gardenWallShort1.draw(self.screen)
+
 		self.tree.draw(self.screen)
 		self.wheel.draw(self.screen)
 		self.dog.draw(self.screen)
 		self.player.draw(self.screen)
+
 		# Flip the display after drawing, so stuff shows up on screen
 		pygame.display.flip()
 	# displayUpdate() end

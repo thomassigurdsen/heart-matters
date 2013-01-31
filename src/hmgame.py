@@ -36,13 +36,13 @@ class HMGame:
 		self.player = Player()
 
 		self.interactive = pygame.sprite.Group()
-		self.wheel = hmObject("wheelbarrow.1.png","creakywheel.ogg", (924,200), (255,0,255))
-		self.dog = hmObject ("character.png","creakywheel.ogg", (30,800), (255,0,255))
+		self.wheel = hmObject("wheelbarrow.1.png","creakywheel.ogg", (150,200), (255,0,255))
+#		self.dog = hmObject ("character.png","creakywheel.ogg", (30,800), (255,0,255))
 		self.heartBeat = SoundObject("heartbeat.ogg", (400,500))
 
 		self.interactive.add(self.heartBeat)
 		self.interactive.add(self.wheel)
-		self.interactive.add(self.dog)
+#		self.interactive.add(self.dog)
 
 		#self.heartBeat()
 		self.deltaX = 0
@@ -90,7 +90,7 @@ class HMGame:
 			#self.deltaX = 0
 			#self.deltaY = 0
 		self.displayUpdate()
-		self.heartBeat.volumeControler(self.player.rect.copy())
+		self.heartBeat.volumeControler(self.player.rect)
 	# update() end
 
 	def eventHandler(self):
@@ -174,7 +174,7 @@ class HMGame:
 
 		self.tree.draw(self.screen)
 		self.wheel.draw(self.screen)
-		self.dog.draw(self.screen)
+#		self.dog.draw(self.screen)
 		self.player.draw(self.screen)
 
 		# Flip the display after drawing, so stuff shows up on screen

@@ -29,13 +29,15 @@ pygame.init()
 class HMGame:
 	def __init__(self, screen):
 		self.screen = screen
-		#self.background = 0,120,100
 		self.background = ImageObject("Courtyard.png", (0,0))
 
 		#pygame.transform.scale(self.srf, (1024,768))
 		self.player = Player()
 
-		self.interactive = pygame.sprite.RenderUpdates()
+		# Make All interactive objects and add them to group
+		self.interactive = pygame.sprite.Group()
+		## ^^ Having this be a RenderUpdates type of group makes objects flicker when player is
+		## standing on top of them.
 		self.wheel = hmObject("wheelbarrow.1.png","creakywheel.ogg", (150,200), (255,0,255))
 #		self.dog = hmObject ("character.png","creakywheel.ogg", (30,800), (255,0,255))
 #		self.heartBeat = SoundObject("heartbeat.ogg", (400,500))
@@ -68,20 +70,13 @@ class HMGame:
 		self.rightwall = HMInvisibleSprite(self.screen.get_width() - rightwallsize,longwallsize, rightwallsize,screen.get_width() - (longwallsize*2))
 		self.wallgroup = pygame.sprite.Group((self.topWall, self.bottomWall, self.leftwall, self.rightwall))
 
-		## Make trees.
+		## Make colliding objects group, have it contain both interactive and wallgroup
 		self.tree = ImageObject("tree.png", ((self.screen.get_size()[0] - 160), 100), (255,0,255))
-		self.collidingObjectsGroup = pygame.sprite.RenderUpdates((self.tree))
+		self.collidingObjectsGroup = pygame.sprite.RenderUpdates((self.tree, self.interactive, self.wallgroup))
 	# __init__() end
 
 	def update(self):
 		self.eventHandler()
-		# check for collisions with wallgroup #boundingBoxGroup
-		for wall in pygame.sprite.spritecollide(self.player, self.wallgroup, False):
-			if DEBUG > 1:
-				print("COLLISION: WALL")
-			self.player.keyMove(-self.deltaX, -self.deltaY)
-			self.deltaX = 0
-			self.deltaY = 0
 		# check for collisions with collidingObjectsGroup, player first:
 		for collidable in pygame.sprite.spritecollide(self.player, self.collidingObjectsGroup, False):
 			if DEBUG > 1:
@@ -170,12 +165,8 @@ class HMGame:
 		# Draw everything after drawing the background
 #		if self.heartfound == True:
 #			self.heart.draw(self.screen)
-		self.player.draw(self.screen)
 
 		pygame.display.update(self.interactive.draw(self.screen))
-		self.tree.draw(self.screen)
-		self.wheel.draw(self.screen)
-#		self.dog.draw(self.screen)
 
 		self.player.draw(self.screen)
 		# Flip the display after drawing, so stuff shows up on screen

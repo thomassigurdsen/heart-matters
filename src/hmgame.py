@@ -38,13 +38,17 @@ class HMGame:
 		self.interactive = pygame.sprite.Group()
 		## ^^ Having this be a RenderUpdates type of group makes objects flicker when player is
 		## standing on top of them.
+		anipos = (350,400)
 		wheel = hmObject("wheelbarrow.1.png","creakywheel.ogg", (150,200), (255,0,255))
+		mouse = hmObject("mouse.png", "heartbeat.ogg", anipos, (255,0,255))
+		mouse.visible = False
 #		self.dog = hmObject ("character.png","creakywheel.ogg", (30,800), (255,0,255))
-#		self.heartBeat = SoundObject("heartbeat.ogg", (400,500))
+#		self.heartBeat = SoundObject("heartbeat.ogg", anipos)
 
 #		self.interactive.add(self.heartBeat)
 		self.interactive.add(wheel)
-#		self.interactive.add(self.dog)
+		self.interactive.add(mouse)
+		self.animal = mouse
 
 		#self.heartBeat()
 		self.deltaX = 0
@@ -52,7 +56,7 @@ class HMGame:
 		self.playerSpeed = 1
 
 		## Make heart sound object
-#		self.heartbeat = SoundObject("heartbeat.ogg", (145, 400))
+#		self.heartbeat = SoundObject("heartbeat.ogg", (345, 400))
 
 		# Heart found bool statement
 		self.heartfound = False
@@ -72,7 +76,7 @@ class HMGame:
 
 		## Make colliding objects group, have it contain both interactive and wallgroup
 		self.tree = ImageObject("tree.png", ((self.screen.get_size()[0] - 160), 100), (255,0,255))
-		self.collidingObjectsGroup = pygame.sprite.RenderUpdates((self.tree, self.interactive, self.wallgroup))
+		self.collidingObjectsGroup = pygame.sprite.RenderUpdates((self.tree, wheel, self.wallgroup))
 	# __init__() end
 
 	def update(self):
@@ -85,7 +89,7 @@ class HMGame:
 			#self.deltaX = 0
 			#self.deltaY = 0
 		self.displayUpdate()
-#		self.heartBeat.volumeControler(self.player.rect)
+		self.animal.volumeControler(self.player.rect)
 	# update() end
 
 	def eventHandler(self):
@@ -126,10 +130,14 @@ class HMGame:
 				if event.key == K_r:
 					self.player.resetPosition()
 				if event.key == K_SPACE:
+					hit = False
 					for interactive in pygame.sprite.spritecollide(self.player, self.interactive, False, pygame.sprite.collide_circle):
 						if DEBUG > 1:
 							print ("interactive hit")
 						interactive.stopSound()
+						hit = True
+					if not hit:
+						SoundObject("digging.ogg", (self.player.rect[0],self.player.rect[1]))
 #					if self.player.rect.colliderect(self.heartbeat.rect):
 #						self.heartfound = True
 #						if DEBUG > 1:

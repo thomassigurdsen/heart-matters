@@ -34,6 +34,7 @@ class Player(pygame.sprite.Sprite):
 		self.scrArea = screen.get_rect()
 		self.rect = self.image.get_rect().move(self.startxpos, self.startypos)
 		self.radius = 10
+		self.animal = None
 	#end __ init__
 
 	def draw(self, screen):

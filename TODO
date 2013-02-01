@@ -1,13 +1,7 @@
 heart-matters programmers TODO list:
 
-Obstacles and Puzzles:
-	replace the two drawn ones
-	add a couople more
-	fix arrows for tutorial
 Player:
 	animate!
-Fix endscreens:
-	do these work at all?
 Sound management:
 	should be tweaked, doesn't work properly
 Laboratory:
@@ -17,3 +11,7 @@ Laboratory:
 	animation of animals?
 Random Animal/Heart placement:
 	add it.
+
+Obstacles and Puzzles:
+	add a couple more
+	fix arrows for tutorial

@@ -20,19 +20,21 @@
 import pygame, sys, os
 from pygame.locals import *
 from player import *
-from hmobject import *
+from imageobject import *
 from hmglobals import DEBUG
 pygame.init()
 
 
-def titleScreen(screen,image ,sound):
+def titleScreen(screen, image):# ,sound):
 		screen = screen
 		background = 0,0,0
 		playMenu = True
-		#adds a object with image and sound
-		titleScreen = hmObject(image, sound, (0,0), (255,0,255))
 
-        #Runs the title screen as long as the player dose not push the spacebar
+		#adds an object with image ###and sound
+		#titleScreen = hmObject(image, sound, (0,0), (255,0,255))
+		titleScreen = ImageObject(image, (0,0), (255,0,255))
+
+		#Runs the title screen as long as the player does not push the spacebar
 		while playMenu:
 			#screen.fill(background)
 			titleScreen.draw(screen)
@@ -42,4 +44,4 @@ def titleScreen(screen,image ,sound):
 				if event.type == KEYDOWN:
 					if event.key == K_SPACE:
 						playMenu = False
-						titleScreen.stopSound()
+#						titleScreen.stopSound()

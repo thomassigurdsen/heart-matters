@@ -127,7 +127,7 @@ class HMGame:
 					self.player.resetPosition()
 				if event.key == K_SPACE:
 					for interactive in pygame.sprite.spritecollide(self.player, self.interactive, False, pygame.sprite.collide_circle):
-						if DEBUG > 0:
+						if DEBUG > 1:
 							print ("interactive hit")
 						interactive.stopSound()
 #					if self.player.rect.colliderect(self.heartbeat.rect):

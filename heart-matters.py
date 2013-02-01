@@ -20,6 +20,7 @@ import sys, pygame, os
 sys.path.append('./src/')
 from hmgame import *
 from titleScreen import *
+from soundobject import *
 pygame.init()
 
 def main():
@@ -30,14 +31,17 @@ def main():
 	height = 768
 	size = width, height
 	gameOver = False
-	clock = pygame.time.Clock()
+#	clock = pygame.time.Clock()
 
 	# The screen is a pygame surface object.
 	screen = pygame.display.set_mode(size, pygame.RESIZABLE)
 	pygame.display.set_caption('Heart Matters')
+	sound = SoundObject("heartbeat.ogg", (0,0))
 #	titleScreen(screen,"titlescreen.png", "heartbeat.ogg") # The black & white thing.
-	titleScreen(screen,"thtmInfoScreen1.png", "heartbeat.ogg") # Instruction page.
-	titleScreen(screen,"thtmInfoScreen2.png", "heartbeat.ogg") # Story page.
+	titleScreen(screen,"thtmInfoScreen1.png")#, "heartbeat.ogg") # Instruction page.
+	titleScreen(screen,"thtmInfoScreen2.png")#, "heartbeat.ogg") # Story page.
+	sound.stopSound()
+	sound = None
 	hmgame = HMGame(screen) # <- init game
 
 	#for background music: ->
@@ -47,14 +51,17 @@ def main():
 	running = True
 	while running:
 		hmgame.update()
-		if DEBUG > 1:
-			print(clock.get_ticks())
-		if clock.tick() > 300000:
+		if DEBUG > 2:
+			print(pygame.time.get_ticks())
+		if pygame.time.get_ticks() > 30000:
+			hmgame = None
+			sound = SoundObject("Cardiac_Arrest(Sampler).ogg", (0,0))
+			titleScreen(screen,"thtmULostScreen.png")#, "Cardiac_Arrest(Sampler).ogg")
+			titleScreen(screen,"thtmCredits1.png")#, "Cardiac_Arrest(Sampler).ogg")
+			titleScreen(screen,"thtmCredits2.png")#, "Cardiac_Arrest(Sampler).ogg")
+			sound.stopSound()
+			sound = None
 			running = False
-			titleScreen(screen,"thtmULostScreen.png", "Cardiac_Arrest(Sampler).ogg")
-			titleScreen(screen,"thtmCredits1.png", "Cardiac_Arrest(Sampler).ogg")
-			titleScreen(screen,"thtmCredits2.png", "Cardiac_Arrest(Sampler).ogg")
-			hmgame = HMGame(screen)
 
 # Main end
 

@@ -38,12 +38,12 @@ class HMGame:
 		self.interactive = pygame.sprite.Group()
 		## ^^ Having this be a RenderUpdates type of group makes objects flicker when player is
 		## standing on top of them.
-		self.wheel = hmObject("wheelbarrow.1.png","creakywheel.ogg", (150,200), (255,0,255))
+		wheel = hmObject("wheelbarrow.1.png","creakywheel.ogg", (150,200), (255,0,255))
 #		self.dog = hmObject ("character.png","creakywheel.ogg", (30,800), (255,0,255))
 #		self.heartBeat = SoundObject("heartbeat.ogg", (400,500))
 
 #		self.interactive.add(self.heartBeat)
-		self.interactive.add(self.wheel)
+		self.interactive.add(wheel)
 #		self.interactive.add(self.dog)
 
 		#self.heartBeat()
@@ -77,7 +77,7 @@ class HMGame:
 
 	def update(self):
 		self.eventHandler()
-		# check for collisions with collidingObjectsGroup, player first:
+		# Check for collisions with collidingObjectsGroup
 		for collidable in pygame.sprite.spritecollide(self.player, self.collidingObjectsGroup, False):
 			if DEBUG > 1:
 				print("COLLISION: COLLIDABLE")
@@ -94,7 +94,6 @@ class HMGame:
 		if DEBUG > 3:
 			print("in eventHadler")
 		for event in pygame.event.get():
-
 			if event.type == QUIT:
 				sys.exit(0)
 # Mouse input
@@ -127,8 +126,8 @@ class HMGame:
 				if event.key == K_r:
 					self.player.resetPosition()
 				if event.key == K_SPACE:
-					for interactive in pygame.sprite.spritecollide(self.player, self.interactive, False):
-						if DEBUG > 1:
+					for interactive in pygame.sprite.spritecollide(self.player, self.interactive, False, pygame.sprite.collide_circle):
+						if DEBUG > 0:
 							print ("interactive hit")
 						interactive.stopSound()
 #					if self.player.rect.colliderect(self.heartbeat.rect):

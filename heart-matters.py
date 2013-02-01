@@ -31,22 +31,16 @@ def main():
 	height = 768
 	size = width, height
 	gameOver = False
-#	clock = pygame.time.Clock()
 
 	# The screen is a pygame surface object.
 	screen = pygame.display.set_mode(size, pygame.RESIZABLE)
 	pygame.display.set_caption('Heart Matters')
 	sound = SoundObject("heartbeat.ogg", (0,0))
-#	titleScreen(screen,"titlescreen.png", "heartbeat.ogg") # The black & white thing.
 	titleScreen(screen,"thtmInfoScreen1.png")#, "heartbeat.ogg") # Instruction page.
 	titleScreen(screen,"thtmInfoScreen2.png")#, "heartbeat.ogg") # Story page.
 	sound.stopSound()
 	sound = None
 	hmgame = HMGame(screen) # <- init game
-
-	#for background music: ->
-	#backgroundSound = pygame.mixer.Sound("res/sound/Spooky Theme.ogg")
-	#backgroundSound.play(-1)
 
 	running = True
 	while running:

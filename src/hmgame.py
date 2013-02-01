@@ -35,12 +35,12 @@ class HMGame:
 		#pygame.transform.scale(self.srf, (1024,768))
 		self.player = Player()
 
-		self.interactive = pygame.sprite.Group()
+		self.interactive = pygame.sprite.RenderUpdates()
 		self.wheel = hmObject("wheelbarrow.1.png","creakywheel.ogg", (150,200), (255,0,255))
 #		self.dog = hmObject ("character.png","creakywheel.ogg", (30,800), (255,0,255))
-		self.heartBeat = SoundObject("heartbeat.ogg", (400,500))
+#		self.heartBeat = SoundObject("heartbeat.ogg", (400,500))
 
-		self.interactive.add(self.heartBeat)
+#		self.interactive.add(self.heartBeat)
 		self.interactive.add(self.wheel)
 #		self.interactive.add(self.dog)
 
@@ -50,13 +50,13 @@ class HMGame:
 		self.playerSpeed = 1
 
 		## Make heart sound object
-		self.heartbeat = SoundObject("heartbeat.ogg", (145, 400))
+#		self.heartbeat = SoundObject("heartbeat.ogg", (145, 400))
 
 		# Heart found bool statement
 		self.heartfound = False
 
 		## Make heart object !!!Debugging only!!
-		self.heart = ImageObject("heart.png", (145, 400), (255,0,255))
+#		self.heart = ImageObject("heart.png", (145, 400), (255,0,255))
 
 		## Make wall bounding-box.
 		longwallsize = 30
@@ -90,7 +90,7 @@ class HMGame:
 			#self.deltaX = 0
 			#self.deltaY = 0
 		self.displayUpdate()
-		self.heartBeat.volumeControler(self.player.rect)
+#		self.heartBeat.volumeControler(self.player.rect)
 	# update() end
 
 	def eventHandler(self):
@@ -136,10 +136,10 @@ class HMGame:
 						if DEBUG > 1:
 							print ("interactive hit")
 						interactive.stopSound()
-					if self.player.rect.colliderect(self.heartbeat.rect):
-						self.heartfound = True
-						if DEBUG > 1:
-							print ("heart found")
+#					if self.player.rect.colliderect(self.heartbeat.rect):
+#						self.heartfound = True
+#						if DEBUG > 1:
+#							print ("heart found")
 #end KEYDOWN
 			if event.type == KEYUP:
 				if DEBUG > 1:
@@ -168,15 +168,16 @@ class HMGame:
 		#self.screen.fill(self.background)
 		self.background.draw(self.screen)
 		# Draw everything after drawing the background
-		if self.heartfound == True:
-			self.heart.draw(self.screen)
+#		if self.heartfound == True:
+#			self.heart.draw(self.screen)
 		self.player.draw(self.screen)
 
+		pygame.display.update(self.interactive.draw(self.screen))
 		self.tree.draw(self.screen)
 		self.wheel.draw(self.screen)
 #		self.dog.draw(self.screen)
-		self.player.draw(self.screen)
 
+		self.player.draw(self.screen)
 		# Flip the display after drawing, so stuff shows up on screen
 		pygame.display.flip()
 	# displayUpdate() end

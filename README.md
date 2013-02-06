@@ -3,6 +3,10 @@ Heart Matters
 
 Global Game Jam 2013 Norway/Hamar.
 
+Note for developers: We (the initial developers) were not familiar with PEP 8 
+when this project started. It therefore follows our own coding standards from 
+the game jam. This may be changed, or not.
+
 Dependencies
 ============
 

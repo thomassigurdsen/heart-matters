@@ -130,13 +130,13 @@ class HMGame:
 				if event.key == K_r:
 					self.player.resetPosition()
 				if event.key == K_SPACE:
-					hit = False
+					self.hit = False
 					for interactive in pygame.sprite.spritecollide(self.player, self.interactive, False, pygame.sprite.collide_circle):
 						if DEBUG > 1:
 							print ("interactive hit")
 						interactive.stopSound()
-						hit = True
-					if not hit:
+						self.hit = True
+					if not self.hit:
 						SoundObject("digging.ogg", (self.player.rect[0],self.player.rect[1]))
 #					if self.player.rect.colliderect(self.heartbeat.rect):
 #						self.heartfound = True

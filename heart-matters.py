@@ -3,6 +3,7 @@
 #  heart-matters.py
 #
 #  Copyright 2013 Thomas Sigurdsen <thomas.sigurdsen@gmail.com>
+#  Copyright 2013 Harry Nystad <harryjnystad@gmail.com>
 #
 #  This program is free software; you can redistribute it and/or modify
 #  it under the terms of the GNU General Public License as published by
@@ -34,11 +35,12 @@ def main():
 	width = 1024
 	height = 768
 	size = width, height
+	gameOver = False
 
 	# The screen is a pygame surface object.
 	screen = pygame.display.set_mode(size, pygame.RESIZABLE)
 	pygame.display.set_caption('Heart Matters')
-	titleScreen(screen) # <- starts Title screen
+	titleScreen(screen,"barrel.png", "heartbeat.ogg") # <- starts Title screen
 	hmgame = HMGame(screen) # <- init game
 
 	#for background music: ->
@@ -47,7 +49,11 @@ def main():
 
 	while 1:
 		hmgame.update()
-
+		if gameOver:
+			hmgame.QUIT()
+			titleScreen(screen,"barrel.png", "Cardiac_Arrest(Sampler).ogg")
+			hmgame = HMGame(screen)
+		
 # Main end
 
 

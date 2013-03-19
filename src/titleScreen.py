@@ -31,13 +31,21 @@ from hmglobals import DEBUG
 pygame.init()
 
 
-def titleScreen(screen):
+def titleScreen(screen,image ,sound):
 		screen = screen
 		background = 0,0,0
 		playMenu = True
+<<<<<<< HEAD
 		#adds a object with image and sound
 		titleScreen = hmObject("barrel.png","heartbeat.ogg", (0,0), (255,0,255))
 
+=======
+
+		
+		#adds a object with image and sound 
+		titleScreen = hmObject(image, sound, (0,0), (255,0,255))
+		
+>>>>>>> 19bee53... made titlescreen mulitipurpos and a gameover screen
 		#Runs the title screen as long as the player dose not push the spacebar
 		while playMenu:
 			screen.fill(background)

@@ -32,7 +32,6 @@ class SoundObject(pygame.sprite.Sprite):
 		if DEBUG > 2:
 			print("in Object.__init__()")
 			print(soundPath)
-
 		soundPath = "res/sound/"+sound
 		pygame.sprite.Sprite.__init__(self)
 		self.rect = pygame.Rect(10,10,10,10) # This is the default size of a sound object on the map
@@ -51,31 +50,31 @@ class SoundObject(pygame.sprite.Sprite):
 		self.sound.stop()
 	#stop end
 
-	def volumeControler(self,playerPos):		
+	def volumeControler(self,playerPos):
 		difX = 0
 		difY = 0
 		volume= 0.0
-		
+
 		if playerPos[0] > self.rect[0]:
 			difX =  playerPos[0] - self.rect[0]
 		else:
 			difX =  self.rect[0] - playerPos[0]
-			
+
 		if playerPos[1] > self.rect[1]:
 			difY =  playerPos[1] - self.rect[1]
 		else:
 			difY =  self.rect[1] - playerPos[1]
-			
-		
+
+
 		difX =  playerPos[0] - self.rect[0]
 		difY =  playerPos[1] - self.rect[1]
-		
+
 		difpos = pygame.math.Vector2(difX,difY)
 
 
 		if DEBUG > 2:
 			print(difpos)
-		
+
 		if difpos[0] > 200 or difpos[1] > 200:
 			self.sound.set_volume(0.0)
 		if difpos[0] < 200 and difpos[1] < 200:

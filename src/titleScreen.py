@@ -35,19 +35,17 @@ def titleScreen(screen):
 		screen = screen
 		background = 0,0,0
 		playMenu = True
-		
-		#adds a object with image and sound 
-		titleScreen = hmObject("ADD BACkGROUND IMAGE HERE","ADD SOUND HERE", (0,0), (255,0,255))
-		
-		
+		#adds a object with image and sound
+		titleScreen = hmObject("barrel.png","heartbeat.ogg", (0,0), (255,0,255))
+
 		#Runs the title screen as long as the player dose not push the spacebar
-		while playMneu:
+		while playMenu:
 			screen.fill(background)
 			titleScreen.draw(screen)
 			pygame.display.flip()
-			
+
 			for event in pygame.event.get():
-				if event.key == K_SPACE:
-					playMenu = False
-					titleScreen.stopSound()
-		
+				if event.type == KEYDOWN:
+					if event.key == K_SPACE:
+						playMenu = False
+						titleScreen.stopSound()

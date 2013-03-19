@@ -24,6 +24,7 @@
 import sys, pygame, os
 sys.path.append('./src/')
 from hmgame import *
+from titleScreen import *
 pygame.init()
 
 def main():
@@ -31,7 +32,7 @@ def main():
 	"""
 	print("Welcome to Heart Matters!")
 	width = 1024
-	height = 750
+	height = 768
 	size = width, height
 
 	# The screen is a pygame surface object.

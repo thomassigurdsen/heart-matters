@@ -35,21 +35,39 @@ class Player(pygame.sprite.Sprite):
 		self.startxpos = 200
 		self.startypos = 200
 		pygame.sprite.Sprite.__init__(self)
-		self.image, self.rect = loadimage("res/image/playerAnimation.png", (255,0,255))
+#		self.image, self.rect = loadimage("res/image/playerAnimation.png", (255,0,255))
 #		self.ss = spritesheet("playerAnimation.png")
 #		self.image = self.ss.image_at((0,0,40,40))
 		screen = pygame.display.get_surface()
 		self.scrArea = screen.get_rect()
-		self.rect = self.rect.move(self.startxpos, self.startypos)
+
+		## Sprite Animation!
+		self.FPS = 120
+		frames = self.FPS/12
+		self.strips = [
+			SpriteStripAnim('playerAnimation.png', (self.startxpos, self.startypos,40,40), 2, 1, True, frames),
+			#SpriteStripAnim('Explode2.bmp', (0,0,12,12), 7, 1, True, frames),
+			#SpriteStripAnim('Explode3.bmp', (0,0,48,48), 4, 1, True, frames) + SpriteStripAnim('Explode3.bmp', (48,48,48,48), 4, 1, True, frames),
+			#SpriteStripAnim('Explode4.bmp', (0,0,24,24), 6, 1, True, frames),
+			#SpriteStripAnim('Explode5.bmp', (0,0,48,48), 4, 1, True, frames) + SpriteStripAnim('Explode5.bmp', (48,48,48,48), 4, 1, True, frames),
+		]
+		self.spritenum = 0
+		self.clock = pygame.time.Clock()
+		self.strips[self.spritenum].iter()
+		self.image = self.strips[self.spritenum].next()
+
+		self.rect = self.image.get_rect().move(self.startxpos, self.startypos)
 	#end __ init__
 
 	def draw(self, screen):
+		#screen.blit(self.image, (self.rect[0], self.rect[1]))
 		screen.blit(self.image, (self.rect[0], self.rect[1]))
 	#end draw
 
 	def mouseMove(self, pos):
 		if DEBUG > 2:
 			print(pos)
+		print("Mousemovement should not be used!")
 		newpos = self.rect.move((pos[0] - self.rect[0]), (pos[1] - self.rect[1]))
 		self.rect = newpos
 	# end mouseMove
@@ -59,6 +77,12 @@ class Player(pygame.sprite.Sprite):
 			print("in player.keymove")
 		if DEBUG > 2:
 			print("dx, dy: ", deltaX, deltaY)
+
+		self.spritenum += 1
+		if self.spritenum >= len(self.strips):
+			self.spritenum = 0
+		self.strips[self.spritenum].iter()
+
 		newpos = self.rect.move((deltaX), (deltaY))
 		self.rect = newpos
 	# end keyMove
